@@ -7,7 +7,35 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
+#define DEFAULT 0
+#define SFT     1
+#define SYM     2
+#define NAV     3
+
 / {
+    combos {
+        compatible = "zmk,combos";
+        combo_del {
+            timeout-ms = <50>;
+            key-positions = <2 3>;
+            bindings = <&kp DEL>;
+        };
+        combo_tab {
+            timeout-ms = <50>;
+            key-positions = <12 13>;
+            bindings = <&kp TAB>;
+        };
+        combo_tilde {
+            timeout-ms = <50>;
+            key-positions = <20 19>;
+            bindings = <&kp TILDE>;
+        };
+        combo_ent {
+            timeout-ms = <50>;
+            key-positions = <30 29>;
+            bindings = <&kp ENTER>;
+        };
+    };
 
 	keymap {
 		compatible = "zmk,keymap";
@@ -15,12 +43,38 @@
 		// This is a sample keymap intended to be replaced with your own
 		base_layer {
 			bindings = <
-				&kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
-				&kp A     &kp S     &kp D     &kp F     &kp G     &kp H     &kp J     &kp K     &kp L     &kp SEMI
-				&kp Z     &kp X     &kp C     &kp V     &kp B     &kp N     &kp M     &kp COMMA &kp DOT   &kp SLASH
-				                              &kp TAB   &kp BSPC  &kp SPACE &kp ENTER
+				&kp Q &kp W &kp F &kp P &kp B &kp J &kp L &kp U     &kp Y   &kp MINUS
+				&kp A &kp R &kp S &kp T &kp G &kp M &kp N &kp E     &kp I   &kp O
+				&kp Z &kp X &kp C &kp D &kp V &kp K &kp H &kp COMMA &kp DOT &kp SLASH
+				&mt LCTRL ESC    &lt SFT BSPC    &lt SYM SPACE    &lt NAV SEMI
 			>;
 		};
 
+		sft_layer {
+			bindings = <
+				&kp LS(Q) &kp LS(W) &kp LS(F) &kp LS(P) &kp LS(B) &kp LS(J) &kp LS(L) &kp LS(U) &kp LS(Y) &kp LS(MINUS)
+				&kp LS(A) &kp LS(R) &kp LS(S) &kp LS(T) &kp LS(G) &kp LS(M) &kp LS(N) &kp LS(E) &kp LS(I) &kp LS(O)
+				&kp LS(Z) &kp LS(X) &kp LS(C) &kp LS(V) &kp LS(B) &kp LS(K) &kp LS(H) &kp DQT   &kp SQT   &kp LS(SLASH)
+				&trans    &trans    &trans    &kp COLON
+			>;
+		};
+
+		sym_layer {
+			bindings = <
+				&kp N1   &kp N2   &kp N3   &kp N4   &kp N5    &kp N6    &kp N7   &kp N8   &kp N9   &kp N0
+				&kp EXCL &kp AT   &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp STAR &kp PIPE &kp BSLH
+				&kp LBKT &kp RBKT &kp LBRC &kp RBRC &kp PLUS  &kp EQUAL &kp LPAR &kp RPAR &kp LT   &kp GT
+				&kp GRAVE    &trans    &trans    &trans
+			>;
+		};
+
+		nav_layer {
+			bindings = <
+				&kp N1   &kp N2   &kp N3   &kp N4   &kp N5    &kp N6    &kp N7   &kp N8   &kp N9   &kp N0
+				&kp EXCL &kp AT   &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS &kp STAR &kp PIPE &kp BSLH
+				&kp LBKT &kp RBKT &kp LBRC &kp RBRC &kp PLUS  &kp EQUAL &kp LPAR &kp RPAR &kp LT   &kp GT
+				&trans    &kp RET    &trans    &trans
+			>;
+		};
 	};
 };
