@@ -13,22 +13,60 @@
 #define NAV     2
 
 / {
+    macros {
+        macro_par: macro_par {
+            label = "macro_par";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
+        };
+        macro_brc: macro_brc {
+            label = "macro_brc";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp LBRC &kp RBRC &kp LEFT>;
+        };
+        macro_brk: macro_brk {
+            label = "macro_brk";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
+        };
+        macro_sqt: macro_sqt {
+            label = "macro_sqt";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp SQT &kp SQT &kp LEFT>;
+        };
+        macro_dqt: macro_dqt {
+            label = "macro_dqt";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp DQT &kp DQT &kp LEFT>;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
-        combo_copy {
+        combo_caps_word {
             timeout-ms = <50>;
             key-positions = <2 3>; // fp
-            bindings = <&kp LG(C)>;
+            bindings = <&caps_word>;
         };
         combo_del {
             timeout-ms = <50>;
-            key-positions = <3 4>; // pb
+            key-positions = <2 4>; // fb
             bindings = <&kp DEL>;
         };
-        combo_caps_word {
+        combo_copy_home{
             timeout-ms = <50>;
-            key-positions = <2 13>; // ft
-            bindings = <&caps_word>;
+            key-positions = <12 14>; // sg
+            bindings = <&kp LG(C)>;
         };
         combo_tab {
             timeout-ms = <50>;
@@ -55,6 +93,11 @@
             key-positions = <4 5>; // bj
             bindings = <&bootloader>;
         };
+        combo_bt_clr {
+            timeout-ms = <50>;
+            key-positions = <24 25>; // vk
+            bindings = <&bt BT_CLR>;
+        };
     };
 
     behaviors {
@@ -71,31 +114,45 @@
             compatible = "zmk,behavior-hold-tap";
             label = "THUMB_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            quick-tap-ms = <200>;
+            tapping-term-ms = <175>;
+            quick-tap-ms = <175>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
         };
-        td_par: tap_dance_0 {
+        td_par: td_par {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_0";
+            label = "td_par";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp LPAR>, <&kp RPAR>;
+            bindings = <&macro_par>, <&kp RPAR>;
         };
-        td_brc: tap_dance_1 {
+        td_brc: td_brc {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_1";
+            label = "td_brc";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp LBRC>, <&kp RBRC>;
+            bindings = <&macro_brc>, <&kp RBRC>;
         };
-        td_brk: tap_dance_2 {
+        td_bkt: td_bkt {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_2";
+            label = "td_bkt";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp LBKT>, <&kp RBKT>;
+            bindings = <&macro_brk>, <&kp RBKT>;
+        };
+        td_sqt: td_sqt {
+            compatible = "zmk,behavior-tap-dance";
+            label = "td_sqt";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&macro_sqt>, <&kp SQT>;
+        };
+        td_dqt: td_dqt {
+            compatible = "zmk,behavior-tap-dance";
+            label = "td_dqt";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&macro_dqt>, <&kp DQT>;
         };
     };
 
@@ -104,7 +161,7 @@
 
 		base_layer {
 			bindings = <
-				&kp Q  &kp W       &kp F       &kp P  &kp B  &kp J  &kp L  &kp U       &kp Y       &kp SEMI
+				&kp Q  &kp W       &kp F       &kp P  &kp B  &kp J  &kp L  &kp U       &kp Y       &kp SQT
 				&kp A  &hm LALT R  &hm LGUI S  &kp T  &kp G  &kp M  &kp N  &hm LGUI E  &hm LALT I  &kp O
 				&kp Z  &kp X       &kp C       &kp D  &kp V  &kp K  &kp H  &kp COMMA   &kp DOT     &kp SLASH
 				&tm LCTRL ESC    &tm LSHFT BSPC    &lt SYM SPACE    &lt NAV MINUS
@@ -113,19 +170,19 @@
 
 		sym_layer {
 			bindings = <
-				&kp N1     &kp N2     &kp N3    &kp N4    &kp N5     &kp N6     &kp N7    &kp N8    &kp N9     &kp N0
-				&kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS  &kp STAR  &kp EQUAL  &kp PIPE
-				&kp TILDE  &kp GRAVE  &kp DQT   &kp SQT   &trans     &kp PLUS   &td_par   &td_brc   &td_brk    &kp BSLH
-				&trans    &trans    &trans    &trans
+				&kp N1     &kp N2    &kp N3    &kp N4    &kp N5     &kp N6     &kp N7    &kp N8    &kp N9     &kp N0
+				&kp EXCL   &kp AT    &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS  &kp STAR  &kp EQUAL  &kp COLON
+				&kp TILDE  &kp SEMI  &td_dqt   &td_sqt   &kp PIPE   &kp PLUS   &td_par   &td_brc   &td_bkt    &kp BSLH
+				&kp GRAVE  &trans    &trans    &trans
 			>;
 		};
 
-// TODO: sceenshots
+
 		nav_layer {
 			bindings = <
-				&kp F1   &kp F2   &kp F3            &kp F4             &kp F5      &kp F6    &kp F7        &kp F8        &kp F9     &kp F10
-				&kp F11  &kp F12  &kp LC(LS(LEFT))  &kp LC(LS(RIGHT))  &trans      &kp LEFT  &kp DOWN      &kp UP        &kp RIGHT  &trans
-				&reset   &trans   &bt BT_PRV        &bt BT_NXT         &bt BT_CLR  &trans    &kp C_VOL_DN  &kp C_VOL_UP  &trans     &trans
+				&kp F1   &kp F2   &kp F3            &kp F4             &kp F5              &kp F6    &kp F7        &kp F8        &kp F9     &kp F10
+				&kp F11  &kp F12  &kp LC(LS(LEFT))  &kp LC(LS(RIGHT))  &kp LC(LS(LG(N4)))  &kp LEFT  &kp DOWN      &kp UP        &kp RIGHT  &trans
+				&reset   &trans   &bt BT_PRV        &bt BT_NXT         &kp LS(LG(N4))      &trans    &kp C_VOL_DN  &kp C_VOL_UP  &trans     &trans
 				&trans    &kp RET    &trans    &trans
 			>;
 		};
