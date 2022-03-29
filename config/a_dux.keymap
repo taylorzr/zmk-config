@@ -12,41 +12,46 @@
 #define SYM     1
 #define NAV     2
 
+
+&caps_word {
+    continue-list = <UNDERSCORE MINUS BSPC>;
+};
+
 / {
     macros {
         macro_par: macro_par {
             label = "macro_par";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <10>;
+            wait-ms = <0>;
             bindings = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
         };
         macro_brc: macro_brc {
             label = "macro_brc";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <10>;
+            wait-ms = <0>;
             bindings = <&macro_tap &kp LBRC &kp RBRC &kp LEFT>;
         };
         macro_brk: macro_brk {
             label = "macro_brk";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <10>;
+            wait-ms = <0>;
             bindings = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
         };
         macro_sqt: macro_sqt {
             label = "macro_sqt";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <10>;
+            wait-ms = <0>;
             bindings = <&macro_tap &kp SQT &kp SQT &kp LEFT>;
         };
         macro_dqt: macro_dqt {
             label = "macro_dqt";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <10>;
+            wait-ms = <0>;
             bindings = <&macro_tap &kp DQT &kp DQT &kp LEFT>;
         };
     };
@@ -73,6 +78,11 @@
             key-positions = <22 23>; // cd
             bindings = <&kp TAB>;
         };
+        combo_reset {
+            timeout-ms = <50>;
+            key-positions = <23 24>; // dv
+            bindings = <&reset>;
+        };
         combo_play {
             timeout-ms = <50>;
             key-positions = <6 7>; // lu
@@ -83,12 +93,17 @@
             key-positions = <5 7>; // ju
             bindings = <&kp C_NEXT>;
         };
+        combo_reset_right {
+            timeout-ms = <50>;
+            key-positions = <25 26>; // kh
+            bindings = <&reset>;
+        };
         combo_ent {
             timeout-ms = <50>;
             key-positions = <26 27>; // h,
             bindings = <&kp ENTER>;
         };
-        combo_reset {
+        combo_bootloader {
             timeout-ms = <50>;
             key-positions = <4 5>; // bj
             bindings = <&bootloader>;
@@ -105,8 +120,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            quick-tap-ms = <175>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
@@ -114,10 +129,19 @@
             compatible = "zmk,behavior-hold-tap";
             label = "THUMB_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <175>;
-            quick-tap-ms = <175>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <200>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
+        };
+        tl: thumb_layers {
+            compatible = "zmk,behavior-hold-tap";
+            label = "THUMB_LAYERS";
+            #binding-cells = <2>;
+            tapping-term-ms = <125>;
+            quick-tap-ms = <200>;
+            flavor = "balanced";
+            bindings = <&mo>, <&kp>;
         };
         td_par: td_par {
             compatible = "zmk,behavior-tap-dance";
@@ -164,7 +188,7 @@
 				&kp Q  &kp W       &kp F       &kp P  &kp B  &kp J  &kp L  &kp U       &kp Y       &kp SQT
 				&kp A  &hm LALT R  &hm LGUI S  &kp T  &kp G  &kp M  &kp N  &hm LGUI E  &hm LALT I  &kp O
 				&kp Z  &kp X       &kp C       &kp D  &kp V  &kp K  &kp H  &kp COMMA   &kp DOT     &kp SLASH
-				&tm LCTRL ESC    &tm LSHFT BSPC    &lt SYM SPACE    &lt NAV MINUS
+				&tm LCTRL ESC    &tm LSHFT BSPC    &tl SYM SPACE    &tl NAV MINUS
 			>;
 		};
 
@@ -182,7 +206,7 @@
 			bindings = <
 				&kp F1   &kp F2   &kp F3            &kp F4             &kp F5              &kp F6    &kp F7        &kp F8        &kp F9     &kp F10
 				&kp F11  &kp F12  &kp LC(LS(LEFT))  &kp LC(LS(RIGHT))  &kp LC(LS(LG(N4)))  &kp LEFT  &kp DOWN      &kp UP        &kp RIGHT  &trans
-				&reset   &trans   &bt BT_PRV        &bt BT_NXT         &kp LS(LG(N4))      &trans    &kp C_VOL_DN  &kp C_VOL_UP  &trans     &trans
+				&trans   &trans   &bt BT_PRV        &bt BT_NXT         &kp LS(LG(N4))      &trans    &kp C_VOL_DN  &kp C_VOL_UP  &trans     &trans
 				&trans    &kp RET    &trans    &trans
 			>;
 		};
