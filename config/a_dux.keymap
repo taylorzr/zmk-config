@@ -9,9 +9,22 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define DEFAULT 0
-#define SYM     1
-#define NAV     2
+#define GAME    1
+#define SYM     2
+#define NAV     3
 
+
+&mt {
+  tapping-term-ms = <150>;
+  quick-tap-ms = <200>;
+  flavor = "hold-preferred";
+};
+
+&lt {
+  tapping-term-ms = <150>;
+  quick-tap-ms = <200>;
+  flavor = "balanced";
+};
 
 &caps_word {
     continue-list = <UNDERSCORE MINUS BSPC>;
@@ -73,6 +86,11 @@
             key-positions = <12 14>; // sg
             bindings = <&kp LG(C)>;
         };
+        combo_copy{
+            timeout-ms = <50>;
+            key-positions = <12 23>; // sd
+            bindings = <&kp LG(C)>;
+        };
         combo_tab {
             timeout-ms = <50>;
             key-positions = <22 23>; // cd
@@ -125,24 +143,6 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-        tm: thumb_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "THUMB_MODS";
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <200>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-        tl: thumb_layers {
-            compatible = "zmk,behavior-hold-tap";
-            label = "THUMB_LAYERS";
-            #binding-cells = <2>;
-            tapping-term-ms = <125>;
-            quick-tap-ms = <200>;
-            flavor = "balanced";
-            bindings = <&mo>, <&kp>;
-        };
         td_par: td_par {
             compatible = "zmk,behavior-tap-dance";
             label = "td_par";
@@ -188,7 +188,16 @@
 				&kp Q  &kp W       &kp F       &kp P  &kp B  &kp J  &kp L  &kp U       &kp Y       &kp SQT
 				&kp A  &hm LALT R  &hm LGUI S  &kp T  &kp G  &kp M  &kp N  &hm LGUI E  &hm LALT I  &kp O
 				&kp Z  &kp X       &kp C       &kp D  &kp V  &kp K  &kp H  &kp COMMA   &kp DOT     &kp SLASH
-				&tm LCTRL ESC    &tm LSHFT BSPC    &tl SYM SPACE    &tl NAV MINUS
+				&mt LCTRL ESC    &mt LSHFT BSPC    &lt SYM SPACE    &lt NAV MINUS
+			>;
+		};
+
+		game_layer {
+			bindings = <
+				&kp TAB    &kp Q  &kp W  &kp E  &kp R  &kp J  &kp L  &kp U       &kp Y       &kp SQT
+				&kp LSHFT  &kp A  &kp S  &kp D  &kp F  &kp M  &kp N  &hm LGUI E  &hm LALT I  &kp O
+				&kp ESC    &kp Z  &kp X  &kp C  &kp V  &kp K  &kp H  &kp COMMA   &kp DOT     &kp SLASH
+				&lt SYM LCTRL    &kp SPC    &lt SYM SPACE    &lt NAV MINUS
 			>;
 		};
 
@@ -201,14 +210,13 @@
 			>;
 		};
 
-
 		nav_layer {
 			bindings = <
-				&kp F1   &kp F2   &kp F3            &kp F4             &kp F5              &kp F6    &kp F7        &kp F8        &kp F9     &kp F10
-				&kp F11  &kp F12  &kp LC(LS(LEFT))  &kp LC(LS(RIGHT))  &kp LC(LS(LG(N4)))  &kp LEFT  &kp DOWN      &kp UP        &kp RIGHT  &trans
-				&trans   &trans   &bt BT_PRV        &bt BT_NXT         &kp LS(LG(N4))      &trans    &kp C_VOL_DN  &kp C_VOL_UP  &trans     &trans
-				&trans    &kp RET    &trans    &trans
+				&bt BT_PRV  &bt BT_SEL 0  &bt BT_SEL 1      &bt BT_SEL 2       &bt BT_NXT  &kp C_PP  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_NEXT &to 1
+				&kp F11     &kp F12       &kp LC(LS(LEFT))  &kp LC(LS(RIGHT))  &trans      &kp LEFT  &kp DOWN      &kp UP        &kp RIGHT  &kp LS(LG(N4))
+				&kp F1      &kp F2        &kp F3            &kp F4             &kp F5      &kp F6    &kp F7        &kp F8        &kp F9     &kp F10
+				&kp LC(LS(LG(N4)))    &kp RET    &kp C_SLEEP    &trans
 			>;
 		};
-	};
+
 };
