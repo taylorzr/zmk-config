@@ -1,3 +1,5 @@
+// vim: textwidth=0
+
 /*
  * Copyright (c) 2021 The ZMK Contributors
  *
@@ -9,9 +11,8 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define DEFAULT 0
-#define GAME    1
-#define SYM     2
-#define NAV     3
+#define SYM     1
+#define NAV     2
 
 
 &mt {
@@ -71,30 +72,35 @@
 
     combos {
         compatible = "zmk,combos";
-        combo_caps_word {
+        combo_untab {
+            timeout-ms = <50>;
+            key-positions = <1 2>; // wf
+            bindings = <&kp LS(TAB)>;
+        };
+        combo_tab {
             timeout-ms = <50>;
             key-positions = <2 3>; // fp
-            bindings = <&caps_word>;
+            bindings = <&kp TAB>;
         };
         combo_del {
             timeout-ms = <50>;
             key-positions = <2 4>; // fb
             bindings = <&kp DEL>;
         };
-        combo_copy_home{
+        combo_copy {
             timeout-ms = <50>;
             key-positions = <12 14>; // sg
             bindings = <&kp LG(C)>;
         };
-        combo_copy{
+        combo_screenshot_copy {
             timeout-ms = <50>;
             key-positions = <12 23>; // sd
-            bindings = <&kp LG(C)>;
+            bindings = <&kp LC(LS(LG(N4)))>;
         };
-        combo_tab {
+        combo_paste {
             timeout-ms = <50>;
             key-positions = <22 23>; // cd
-            bindings = <&kp TAB>;
+            bindings = <&kp LG(V)>;
         };
         combo_reset {
             timeout-ms = <50>;
@@ -110,6 +116,11 @@
             timeout-ms = <50>;
             key-positions = <5 7>; // ju
             bindings = <&kp C_NEXT>;
+        };
+        combo_caps_word {
+            timeout-ms = <50>;
+            key-positions = <15 17>; // me
+            bindings = <&caps_word>;
         };
         combo_reset_right {
             timeout-ms = <50>;
@@ -180,6 +191,12 @@
         };
     };
 
+    // THOUGHTS
+    // pipe char is just ok
+    // hardly ever use ; or +
+    // would be nice to have singles of each (){}[], but where would these go?
+    // tilde and backtick feel pretty good
+
     keymap {
 		compatible = "zmk,keymap";
 
@@ -189,15 +206,6 @@
 				&kp A  &hm LALT R  &hm LGUI S  &kp T  &kp G  &kp M  &kp N  &hm LGUI E  &hm LALT I  &kp O
 				&kp Z  &kp X       &kp C       &kp D  &kp V  &kp K  &kp H  &kp COMMA   &kp DOT     &kp SLASH
 				&mt LCTRL ESC    &mt LSHFT BSPC    &lt SYM SPACE    &lt NAV MINUS
-			>;
-		};
-
-		game_layer {
-			bindings = <
-				&kp TAB    &kp Q  &kp W  &kp E  &kp R  &kp J  &kp L  &kp U       &kp Y       &kp SQT
-				&kp LSHFT  &kp A  &kp S  &kp D  &kp F  &kp M  &kp N  &hm LGUI E  &hm LALT I  &kp O
-				&kp ESC    &kp Z  &kp X  &kp C  &kp V  &kp K  &kp H  &kp COMMA   &kp DOT     &kp SLASH
-				&lt SYM LCTRL    &kp SPC    &lt SYM SPACE    &lt NAV MINUS
 			>;
 		};
 
@@ -212,10 +220,10 @@
 
 		nav_layer {
 			bindings = <
-				&bt BT_PRV  &bt BT_SEL 0  &bt BT_SEL 1      &bt BT_SEL 2       &bt BT_NXT  &kp C_PP  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_NEXT &to 1
-				&kp F11     &kp F12       &kp LC(LS(LEFT))  &kp LC(LS(RIGHT))  &trans      &kp LEFT  &kp DOWN      &kp UP        &kp RIGHT  &kp LS(LG(N4))
-				&kp F1      &kp F2        &kp F3            &kp F4             &kp F5      &kp F6    &kp F7        &kp F8        &kp F9     &kp F10
-				&kp LC(LS(LG(N4)))    &kp RET    &kp C_SLEEP    &trans
+				&bt BT_PRV  &bt BT_SEL 0  &bt BT_SEL 1      &bt BT_SEL 2       &bt BT_NXT  &kp LC(LS(LG(N4)))  &kp C_VOL_DN  &kp C_VOL_UP  &kp LS(LG(N4))  &trans
+				&kp F11     &kp F12       &kp LC(LS(LEFT))  &kp LC(LS(RIGHT))  &trans      &kp LEFT            &kp DOWN      &kp UP        &kp RIGHT       &trans
+				&kp F1      &kp F2        &kp F3            &kp F4             &kp F5      &kp F6              &kp F7        &kp F8        &kp F9          &kp F10
+				&trans    &kp RET    &kp C_SLEEP    &trans
 			>;
 		};
 
