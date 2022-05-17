@@ -226,5 +226,5 @@
 				&trans    &kp RET    &kp C_SLEEP    &trans
 			>;
 		};
-
+    };
 };
