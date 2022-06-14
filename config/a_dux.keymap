@@ -79,7 +79,6 @@
     available combos
     he <- this is a bad combo because he is a common substring
     n,
-    3 button combos might be useful
     */
     combos {
         compatible = "zmk,combos";
@@ -138,30 +137,25 @@
             key-positions = <23 24>; // dv
             bindings = <&reset>;
         };
+        combo_save {
+            timeout-ms = <35>;
+            key-positions = <6 7>; // lu
+            bindings = <&kp LC(S)>;
+        };
         combo_play {
             timeout-ms = <50>;
-            key-positions = <6 7>; // lu
+            key-positions = <2 4>; // fb
             bindings = <&kp C_PP>;
         };
         combo_next {
             timeout-ms = <50>;
-            key-positions = <5 7>; // jy
-            bindings = <&kp C_NEXT>;
-        };
-        combo_next3 {
-            timeout-ms = <50>;
-            key-positions = <5 6 7>; // juy
+            key-positions = <5 7>; // ju
             bindings = <&kp C_NEXT>;
         };
         combo_reset_right {
             timeout-ms = <50>;
             key-positions = <25 26>; // kh
             bindings = <&reset>;
-        };
-        combo_save3 {
-            timeout-ms = <50>;
-            key-positions = <16 17 18>; // nei
-            bindings = <&kp LC(S)>;
         };
         combo_ent {
             timeout-ms = <50>;
