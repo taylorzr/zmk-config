@@ -1,0 +1,5 @@
+config SHIELD_LIL_CHONKY_BOIS_LEFT
+    def_bool $(shields_list_contains,lil_chonky_bois_left)
+
+config SHIELD_LIL_CHONKY_BOIS_RIGHT
+    def_bool $(shields_list_contains,lil_chonky_bois_right)

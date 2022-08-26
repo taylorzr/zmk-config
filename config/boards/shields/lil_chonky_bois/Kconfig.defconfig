@@ -1,0 +1,23 @@
+if SHIELD_LIL_CHONKY_BOIS_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "Lil Chonky Bois"
+
+config ZMK_SPLIT_BLE_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_LIL_CHONKY_BOIS_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "Lil Chonky R"
+
+endif
+
+if SHIELD_LIL_CHONKY_BOIS_LEFT || SHIELD_LIL_CHONKY_BOIS_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif
