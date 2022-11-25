@@ -38,40 +38,40 @@
             label = "macro_par";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <0>;
-            wait-ms = <0>;
+            tap-ms = <10>;
+            wait-ms = <10>;
             bindings = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
         };
         macro_brc: macro_brc {
             label = "macro_brc";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <0>;
-            wait-ms = <0>;
+            tap-ms = <10>;
+            wait-ms = <10>;
             bindings = <&macro_tap &kp LBRC &kp RBRC &kp LEFT>;
         };
         macro_bkt: macro_bkt {
             label = "macro_bkt";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <0>;
-            wait-ms = <0>;
+            tap-ms = <10>;
+            wait-ms = <10>;
             bindings = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
         };
         macro_sqt: macro_sqt {
             label = "macro_sqt";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <0>;
-            wait-ms = <0>;
+            tap-ms = <10>;
+            wait-ms = <10>;
             bindings = <&macro_tap &kp SQT &kp SQT &kp LEFT>;
         };
         macro_dqt: macro_dqt {
             label = "macro_dqt";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <0>;
-            wait-ms = <0>;
+            tap-ms = <10>;
+            wait-ms = <10>;
             bindings = <&macro_tap &kp DQT &kp DQT &kp LEFT>;
         };
     };
@@ -190,60 +190,25 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-        td_par: td_par {
-            compatible = "zmk,behavior-tap-dance";
-            label = "td_par";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&macro_par>, <&kp RPAR>;
-        };
-        td_brc: td_brc {
-            compatible = "zmk,behavior-tap-dance";
-            label = "td_brc";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&macro_brc>, <&kp RBRC>;
-        };
-        td_bkt: td_bkt {
-            compatible = "zmk,behavior-tap-dance";
-            label = "td_bkt";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&macro_bkt>, <&kp RBKT>;
-        };
-        td_sqt: td_sqt {
-            compatible = "zmk,behavior-tap-dance";
-            label = "td_sqt";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&macro_sqt>, <&kp SQT>;
-        };
-        td_dqt: td_dqt {
-            compatible = "zmk,behavior-tap-dance";
-            label = "td_dqt";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&macro_dqt>, <&kp DQT>;
-        };
         m_par: m_par {
             compatible = "zmk,behavior-mod-morph";
             label = "MORPH_PAR";
             #binding-cells = <0>;
-            bindings = <&td_par>, <&kp LPAR>;
+            bindings = <&macro_par>, <&kp LPAR>;
             mods = <(MOD_LSFT)>;
         };
         m_brc: m_brc {
             compatible = "zmk,behavior-mod-morph";
             label = "MORPH_BRC";
             #binding-cells = <0>;
-            bindings = <&td_brc>, <&kp LBRC>;
+            bindings = <&macro_brc>, <&kp LBRC>;
             mods = <(MOD_LSFT)>;
         };
         m_bkt: m_bkt {
             compatible = "zmk,behavior-mod-morph";
             label = "MORPH_BKT";
             #binding-cells = <0>;
-            bindings = <&td_bkt>, <&kp LBKT>;
+            bindings = <&macro_bkt>, <&kp LBKT>;
             mods = <(MOD_LSFT)>;
         };
     };
@@ -326,8 +291,8 @@
 				// row 3
 				&kp TILDE
 				&kp SEMI
-				&td_sqt
-				&td_dqt
+				&macro_sqt
+				&macro_dqt
 				&kp PIPE
 				&kp PLUS
 				&m_par
