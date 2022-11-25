@@ -195,21 +195,21 @@
             label = "td_par";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&macro_par>, <&kp LPAR>, <&kp RPAR>;
+            bindings = <&macro_par>, <&kp RPAR>;
         };
         td_brc: td_brc {
             compatible = "zmk,behavior-tap-dance";
             label = "td_brc";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&macro_brc>, <&kp LBRC>, <&kp RBRC>;
+            bindings = <&macro_brc>, <&kp RBRC>;
         };
         td_bkt: td_bkt {
             compatible = "zmk,behavior-tap-dance";
             label = "td_bkt";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&macro_bkt>, <&kp LBKT>, <&kp RBKT>;
+            bindings = <&macro_bkt>, <&kp RBKT>;
         };
         td_sqt: td_sqt {
             compatible = "zmk,behavior-tap-dance";
@@ -253,37 +253,185 @@
 
 		base_layer {
 			bindings = <
-				&lt CTL Q  &kp W       &kp F       &kp P  &kp B  &kp J  &kp L  &kp U       &kp Y       &kp SQT
-				&kp A      &hm LALT R  &hm LGUI S  &kp T  &kp G  &kp M  &kp N  &hm LGUI E  &hm LALT I  &kp O
-				&kp Z      &kp X       &kp C       &kp D  &kp V  &kp K  &kp H  &kp COMMA   &kp DOT     &kp SLASH
-				&mt LCTRL ESC    &mt LSHFT BSPC    &lt SYM SPACE    &lt NAV MINUS
+			  // row 1
+			  &lt CTL Q
+			  &kp W
+			  &kp F
+			  &kp P
+			  &kp B
+			  &kp J
+			  &kp L
+			  &kp U
+			  &kp Y
+			  &kp SQT
+
+			  // row 2
+			  &kp A
+			  &hm LALT R
+			  &hm LGUI S
+			  &kp T
+			  &kp G
+			  &kp M
+			  &kp N
+			  &hm LGUI E
+			  &hm LALT I
+			  &kp O
+
+			  // row 3
+			  &kp Z
+			  &kp X
+			  &kp C
+			  &kp D
+			  &kp V
+			  &kp K
+			  &kp H
+			  &kp COMMA
+			  &kp DOT
+			  &kp SLASH
+
+			  // row thumbs
+			  &mt LCTRL ESC
+			  &mt LSHFT BSPC
+			  &lt SYM SPACE
+			  &lt NAV MINUS
 			>;
 		};
 
 		sym_layer {
 			bindings = <
-				&kp N1     &kp N2    &kp N3    &kp N4    &kp N5     &kp N6     &kp N7    &kp N8    &kp N9     &kp N0
-				&kp EXCL   &kp AT    &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS  &kp STAR  &kp EQUAL  &kp COLON
-				&kp TILDE  &kp SEMI  &td_sqt   &td_dqt   &kp PIPE   &kp PLUS   &m_par    &m_brc    &m_bkt    &kp BSLH
-				&kp GRAVE  &trans    &trans    &trans
+			   // row 1
+				&kp N1
+				&kp N2
+				&kp N3
+				&kp N4
+				&kp N5
+				&kp N6
+				&kp N7
+				&kp N8
+				&kp N9
+				&kp N0
+
+				// row 2
+				&kp EXCL
+				&kp AT
+				&kp HASH
+				&kp DLLR
+				&kp PRCNT
+				&kp CARET
+				&kp AMPS
+				&kp STAR
+				&kp EQUAL
+				&kp COLON
+
+				// row 3
+				&kp TILDE
+				&kp SEMI
+				&td_sqt
+				&td_dqt
+				&kp PIPE
+				&kp PLUS
+				&m_par
+				&m_brc
+				&m_bkt
+				&kp BSLH
+
+				// row thumbs
+				&kp GRAVE
+				&trans
+				&trans
+				&trans
 			>;
 		};
 
 		nav_layer {
 			bindings = <
-				&trans  &trans  &trans            &trans             &trans  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &trans     &kp C_SLEEP
-				&trans  &trans  &kp LC(LS(LEFT))  &kp LC(LS(RIGHT))  &trans  &kp LEFT    &kp DOWN      &kp UP        &kp RIGHT  &trans
-				&trans  &trans  &kp LC(LA(LEFT))  &kp LC(LA(RIGHT))  &trans  &trans      &trans        &trans        &trans     &trans
-				&none &none &none    &trans    &trans    &trans    &trans
+				// row 1
+				&trans
+				&trans
+				&trans
+				&trans
+				&trans
+				&kp C_MUTE
+				&kp C_VOL_DN
+				&kp C_VOL_UP
+				&trans
+				&kp C_SLEEP
+
+				// row 2
+				&trans
+				&trans
+				&kp LC(LS(LEFT))
+				&kp LC(LS(RIGHT))
+				&trans
+				&kp LEFT
+				&kp DOWN
+				&kp UP
+				&kp RIGHT
+				&trans
+
+				// row 3
+				&trans
+				&trans
+				&kp LC(LA(LEFT))
+				&kp LC(LA(RIGHT))
+				&trans
+				&trans
+				&trans
+				&trans
+				&trans
+				&trans
+
+				// row thumbs
+				&trans
+				&trans
+				&trans
+				&trans
 			>;
 		};
 
 		ctl_layer {
 			bindings = <
-				&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bootloader  &trans  &trans  &trans  &trans  &trans
-				&trans  &trans        &bt BT_PRV    &bt BT_NXT    &trans       &trans  &trans  &trans  &trans  &trans
-				&trans  &trans        &trans        &trans        &bt BT_CLR   &trans  &trans  &trans  &trans  &trans
-				&trans    &trans    &trans    &trans
+				// row 1
+				&trans
+				&bt BT_SEL 0
+				&bt BT_SEL 1
+				&bt BT_SEL 2
+				&bootloader
+				&trans
+				&trans
+				&trans
+				&trans
+				&trans
+
+				// row 1
+				&trans
+				&trans
+				&bt BT_PRV
+				&bt BT_NXT
+				&trans
+				&trans
+				&trans
+				&trans
+				&trans
+				&trans
+
+				// row 1
+				&trans
+				&trans
+				&trans
+				&trans
+				&bt BT_CLR
+				&trans
+				&trans
+				&trans
+				&trans
+				&trans
+
+				// row 1
+				&trans
+				&trans
+				&trans
+				&trans
 			>;
 		};
     };
