@@ -15,7 +15,6 @@
 #define NAV     2
 #define CTL     3
 
-
 &mt {
   tapping-term-ms = <130>;
   quick-tap-ms = <200>;
