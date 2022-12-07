@@ -12,8 +12,7 @@
 
 #define DEFAULT 0
 #define SYM     1
-#define NAV     2
-#define CTL     3
+#define CTL     2
 
 &mt {
   tapping-term-ms = <130>;
@@ -31,6 +30,7 @@
     continue-list = <LSHIFT UNDERSCORE MINUS BSPC>;
 };
 
+
 / {
     macros {
         macro_par: macro_par {
@@ -40,6 +40,22 @@
             tap-ms = <10>;
             wait-ms = <10>;
             bindings = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
+        };
+        macro_par_out: macro_par_out {
+            label = "macro_par_out";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <10>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp LPAR &kp RPAR>;
+        };
+        macro_brc_out: macro_brc_out {
+            label = "macro_brc_out";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <10>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp LBRC &kp RBRC>;
         };
         macro_brc: macro_brc {
             label = "macro_brc";
@@ -57,6 +73,14 @@
             wait-ms = <10>;
             bindings = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
         };
+        macro_bkt_out: macro_bkt_out {
+            label = "macro_bkt_out";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <10>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp LBKT &kp RBKT>;
+        };
         macro_sqt: macro_sqt {
             label = "macro_sqt";
             compatible = "zmk,behavior-macro";
@@ -73,142 +97,285 @@
             wait-ms = <10>;
             bindings = <&macro_tap &kp DQT &kp DQT &kp LEFT>;
         };
+        macro_goeql: macro_goeql {
+				label = "macro_goeql";
+				compatible = "zmk,behavior-macro";
+				#binding-cells = <0>;
+				tap-ms = <10>;
+				wait-ms = <10>;
+				bindings = <&macro_tap &kp COLON &kp EQUAL>;
+		  };
     };
 
     /*
     available combos
-    he <- this is a bad combo because he is a common substring
+    he <- use 25 ms timeout
     n,
     */
     combos {
         compatible = "zmk,combos";
-        combo_untab {
+        combo_wf {
             timeout-ms = <50>;
-            key-positions = <1 2>; // wf
+            key-positions = <1 2>;
             bindings = <&kp LS(TAB)>;
         };
-        combo_tab {
+        combo_fp {
             timeout-ms = <50>;
-            key-positions = <2 3>; // fp
+            key-positions = <2 3>;
             bindings = <&kp TAB>;
         };
-        combo_del {
+        /* combo_del { */
+        /*     timeout-ms = <50>; */
+        /*     key-positions = <1 3>;
+        /*     bindings = <&kp DEL>; */
+        /* }; */
+        combo_wfp {
             timeout-ms = <50>;
-            key-positions = <1 3>; // wp
+            key-positions = <1 2 3>;
             bindings = <&kp DEL>;
         };
-        combo_del3 {
-            timeout-ms = <50>;
-            key-positions = <1 2 3>; // wfp
-            bindings = <&kp DEL>;
+        combo_rs {
+            timeout-ms = <25>;
+            key-positions = <11 12>;
+            bindings = <&kp LC(LS(LEFT))>;
         };
-        combo_screenshot_copy {
-            timeout-ms = <50>;
-            key-positions = <12 23>; // sd
-            bindings = <&kp LC(LS(LG(N4)))>;
+        combo_st {
+            timeout-ms = <25>;
+            key-positions = <12 13>;
+            bindings = <&kp LC(LS(RIGHT))>;
         };
-        combo_screenshot_file {
-            timeout-ms = <50>;
-            key-positions = <22 13>; // ct
-            bindings = <&kp LS(LG(N4))>;
+        combo_rst {
+            timeout-ms = <35>;
+            key-positions = <11 12 13>;
+            bindings = <&kp LC(LS(RIGHT))>; // FIXME: use to view desktop
         };
-        combo_copy {
+        combo_rx {
             timeout-ms = <50>;
-            key-positions = <21 22>; // xc
+            key-positions = <11 21>;
+            bindings = <&kp LBKT>;
+        };
+        combo_sc {
+            timeout-ms = <50>;
+            key-positions = <12 22>;
+            bindings = <&kp LBRC>;
+        };
+        combo_td {
+            timeout-ms = <50>;
+            key-positions = <13 23>;
+            bindings = <&kp LPAR>;
+        };
+        combo_sd {
+            timeout-ms = <50>;
+            key-positions = <12 23>;
+            bindings = <&kp LC(LS(LG(N4)))>; // screenshot copy
+        };
+        combo_ct {
+            timeout-ms = <50>;
+            key-positions = <22 13>;
+            bindings = <&kp LS(LG(N4))>; // screenshot file
+        };
+        combo_xc {
+            timeout-ms = <50>;
+            key-positions = <21 22>;
             bindings = <&kp LG(C)>;
         };
-        combo_cut {
+        combo_xd {
             timeout-ms = <50>;
-            key-positions = <21 23>; // xd
+            key-positions = <21 23>;
             bindings = <&kp LG(X)>;
         };
-        combo_paste {
+        combo_cd {
             timeout-ms = <50>;
-            key-positions = <22 23>; // cd
+            key-positions = <22 23>;
             bindings = <&kp LG(V)>;
         };
-        combo_sft_paste {
+        combo_xcd {
             timeout-ms = <50>;
-            key-positions = <21 22 23>; // xcd
+            key-positions = <21 22 23>;
             bindings = <&kp LS(LG(V))>;
         };
-        combo_reset {
+        combo_zv {
             timeout-ms = <50>;
-            key-positions = <23 24>; // dv
+            key-positions = <20 24>;
             bindings = <&reset>;
         };
-        combo_save {
+        combo_lu {
             timeout-ms = <35>;
-            key-positions = <6 7>; // lu
+            key-positions = <6 7>;
             bindings = <&kp LC(S)>;
         };
-        combo_play {
+        combo_luy {
+            timeout-ms = <35>;
+            key-positions = <6 7 8 >;
+            bindings = <&macro_goeql>;
+        };
+        combo_fb {
             timeout-ms = <50>;
-            key-positions = <2 4>; // fb
+            key-positions = <2 4>;
             bindings = <&kp C_PP>;
         };
-        combo_next {
+        combo_ju {
             timeout-ms = <50>;
-            key-positions = <5 7>; // ju
+            key-positions = <5 7>;
             bindings = <&kp C_NEXT>;
         };
-        combo_reset_right {
-            timeout-ms = <50>;
-            key-positions = <25 26>; // kh
-            bindings = <&reset>;
+        combo_ne {
+            timeout-ms = <25>;
+            key-positions = <16 17>;
+            bindings = <&kp COLON>;
         };
-        combo_ent {
+        combo_ei {
+            timeout-ms = <25>;
+            key-positions = <17 18>;
+            bindings = <&kp SEMI>;
+        };
+		  combo_eh {
+            timeout-ms = <35>;
+            key-positions = <17 26>;
+            bindings = <&kp EQUAL>;
+		  };
+        combo_nei {
             timeout-ms = <50>;
-            key-positions = <26 27>; // h,
+            key-positions = <16 17 18>;
+            bindings = <&kp EQUAL>; // FIXME: something else
+        };
+        combo_nh {
+            timeout-ms = <50>;
+            key-positions = <16 26>;
+            bindings = <&kp RPAR>;
+        };
+        combo_e_comma {
+            timeout-ms = <50>;
+            key-positions = <17 27>;
+            bindings = <&kp RBRC>;
+        };
+        combo_i_dot {
+            timeout-ms = <50>;
+            key-positions = <18 28>;
+            bindings = <&kp RBKT>;
+        };
+        combo_h_comma {
+            timeout-ms = <50>;
+            key-positions = <26 27>;
             bindings = <&kp ENTER>;
         };
-        combo_caps_word {
+        combo_h_comma_dot {
             timeout-ms = <50>;
-            key-positions = <27 28>; // ,.
+            key-positions = <26 27 28>;
             bindings = <&caps_word>;
         };
-        combo_bootloader {
+        combo_comma_dot {
             timeout-ms = <50>;
-            key-positions = <4 5>; // bj
-            bindings = <&bootloader>;
+            key-positions = <27 28>;
+            bindings = <&kp EQUAL>;
         };
-        combo_bt_clr {
+        combo_k_slash {
             timeout-ms = <50>;
-            key-positions = <24 25>; // vk
-            bindings = <&bt BT_CLR>;
+            key-positions = <25 29>;
+            bindings = <&reset>;
         };
     };
 
     behaviors {
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
+            label = "homerow_mods";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <200>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-        m_par: m_par {
+        morph_par: morph_par {
             compatible = "zmk,behavior-mod-morph";
-            label = "MORPH_PAR";
+            label = "morph_par";
             #binding-cells = <0>;
-            bindings = <&macro_par>, <&kp LPAR>;
+            bindings = <&macro_par>, <&macro_par_out>;
             mods = <(MOD_LSFT)>;
         };
-        m_brc: m_brc {
+        morph_brc: morph_brc {
             compatible = "zmk,behavior-mod-morph";
-            label = "MORPH_BRC";
+            label = "morph_brc";
             #binding-cells = <0>;
-            bindings = <&macro_brc>, <&kp LBRC>;
+            bindings = <&macro_brc>, <&macro_brc_out>;
             mods = <(MOD_LSFT)>;
         };
-        m_bkt: m_bkt {
+        morph_bkt: morph_bkt {
             compatible = "zmk,behavior-mod-morph";
-            label = "MORPH_BKT";
+            label = "morph_bkt";
             #binding-cells = <0>;
-            bindings = <&macro_bkt>, <&kp LBKT>;
+            bindings = <&macro_bkt>, <&macro_bkt_out>;
             mods = <(MOD_LSFT)>;
+        };
+        morph_n7: morph_n7 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_n7";
+            #binding-cells = <0>;
+            bindings = <&kp N7>, <&kp C_VOL_DN>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_n8: morph_n8 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_n8";
+            #binding-cells = <0>;
+            bindings = <&kp N8>, <&kp C_VOL_UP>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_at: morph_at {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_at";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LEFT)>, <&kp AT>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_hash: morph_hash {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_hash";
+            #binding-cells = <0>;
+            bindings = <&kp LC(UP)>, <&kp HASH>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_dllr: morph_dllr {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_dllr";
+            #binding-cells = <0>;
+            bindings = <&kp LC(DOWN)>, <&kp DLLR>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_prcnt: morph_prcnt {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_prcnt";
+            #binding-cells = <0>;
+            bindings = <&kp LC(RIGHT)>, <&kp PRCNT>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_caret: morph_caret {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_caret";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT>, <&kp CARET>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_amps: morph_amps {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_amps";
+            #binding-cells = <0>;
+            bindings = <&kp DOWN>, <&kp AMPS>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_star: morph_star {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_star";
+            #binding-cells = <0>;
+            bindings = <&kp UP>, <&kp STAR>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_equal: morph_equal {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_equal";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT>, <&kp EQUAL>;
+				mods = <(MOD_LSFT)>;
         };
     };
 
@@ -223,6 +390,7 @@
 			  &kp F
 			  &kp P
 			  &kp B
+
 			  &kp J
 			  &kp L
 			  &kp U
@@ -231,14 +399,15 @@
 
 			  // row 2
 			  &kp A
-			  &hm LALT R
+			  &kp R
 			  &hm LGUI S
 			  &kp T
 			  &kp G
+
 			  &kp M
 			  &kp N
-			  &hm LGUI E
-			  &hm LALT I
+			  &kp E
+			  &kp I
 			  &kp O
 
 			  // row 3
@@ -247,6 +416,7 @@
 			  &kp C
 			  &kp D
 			  &kp V
+
 			  &kp K
 			  &kp H
 			  &kp COMMA
@@ -257,10 +427,12 @@
 			  &mt LCTRL ESC
 			  &mt LSHFT BSPC
 			  &lt SYM SPACE
-			  &lt NAV MINUS
+			  &mt LALT MINUS
 			>;
 		};
 
+		/* &kp C_MUTE */
+		/* &kp C_SLEEP */
 		sym_layer {
 			bindings = <
 			   // row 1
@@ -269,86 +441,43 @@
 				&kp N3
 				&kp N4
 				&kp N5
+
 				&kp N6
-				&kp N7
-				&kp N8
+				&morph_n7
+				&morph_n8
 				&kp N9
 				&kp N0
 
 				// row 2
 				&kp EXCL
-				&kp AT
-				&kp HASH
-				&kp DLLR
-				&kp PRCNT
-				&kp CARET
-				&kp AMPS
-				&kp STAR
+				&morph_at
+				&morph_hash
+				&morph_dllr
+				&morph_prcnt
+
+				&morph_caret
+				&morph_amps
+				&morph_star
+				&morph_equal // something else? equal is combo now; useful for += though
 				&kp EQUAL
-				&kp COLON
 
 				// row 3
 				&kp TILDE
-				&kp SEMI
+				&kp GRAVE
 				&macro_sqt
 				&macro_dqt
-				&kp PIPE
+				&kp PIPE // TODO: Maybe morph to backslash
+
 				&kp PLUS
-				&m_par
-				&m_brc
-				&m_bkt
+				&morph_par
+				&morph_brc
+				&morph_bkt
 				&kp BSLH
 
 				// row thumbs
-				&kp GRAVE
 				&trans
 				&trans
-				&trans
-			>;
-		};
-
-		nav_layer {
-			bindings = <
-				// row 1
-				&trans
-				&trans
-				&trans
-				&trans
-				&trans
-				&kp C_MUTE
-				&kp C_VOL_DN
-				&kp C_VOL_UP
-				&trans
-				&kp C_SLEEP
-
-				// row 2
-				&trans
-				&trans
-				&kp LC(LS(LEFT))
-				&kp LC(LS(RIGHT))
-				&trans
-				&kp LEFT
-				&kp DOWN
-				&kp UP
-				&kp RIGHT
-				&trans
-
-				// row 3
-				&trans
-				&trans
-				&kp LC(LA(LEFT))
-				&kp LC(LA(RIGHT))
-				&trans
-				&trans
-				&trans
-				&trans
-				&trans
-				&trans
-
-				// row thumbs
-				&trans
-				&trans
-				&trans
+				&trans // being held
 				&trans
 			>;
 		};
@@ -361,37 +490,40 @@
 				&bt BT_SEL 1
 				&bt BT_SEL 2
 				&bootloader
+
 				&trans
 				&trans
 				&trans
 				&trans
 				&trans
 
-				// row 1
+				// row 2
 				&trans
 				&trans
 				&bt BT_PRV
 				&bt BT_NXT
 				&trans
+
 				&trans
 				&trans
 				&trans
 				&trans
 				&trans
 
-				// row 1
+				// row 3
 				&trans
 				&trans
 				&trans
 				&trans
 				&bt BT_CLR
+
 				&trans
 				&trans
 				&trans
 				&trans
 				&trans
 
-				// row 1
+				// row thumbs
 				&trans
 				&trans
 				&trans
