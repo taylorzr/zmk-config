@@ -12,7 +12,8 @@
 
 #define DEFAULT 0
 #define SYM     1
-#define CTL     2
+#define NUM     2
+#define CTL     3
 
 &mt {
   tapping-term-ms = <130>;
@@ -204,6 +205,11 @@
             key-positions = <6 7>;
             bindings = <&kp LC(S)>;
         };
+        combo_uy {
+            timeout-ms = <50>;
+            key-positions = <7 8>;
+            bindings = <&kp MINUS>;
+        };
         combo_luy {
             timeout-ms = <35>;
             key-positions = <6 7 8 >;
@@ -232,12 +238,12 @@
 		  combo_eh {
             timeout-ms = <35>;
             key-positions = <17 26>;
-            bindings = <&kp EQUAL>;
+            bindings = <&kp EQUAL>; // FIXME: something else
 		  };
         combo_nei {
             timeout-ms = <50>;
             key-positions = <16 17 18>;
-            bindings = <&kp EQUAL>; // FIXME: something else
+            bindings = <&kp EQUAL>;
         };
         combo_nh {
             timeout-ms = <50>;
@@ -262,12 +268,12 @@
         combo_h_comma_dot {
             timeout-ms = <50>;
             key-positions = <26 27 28>;
-            bindings = <&caps_word>;
+            bindings = <&caps_word>; // FIXME: I don't really use this, something else
         };
         combo_comma_dot {
             timeout-ms = <50>;
             key-positions = <27 28>;
-            bindings = <&kp EQUAL>;
+            bindings = <&kp UNDERSCORE>;
         };
         combo_k_slash {
             timeout-ms = <50>;
@@ -307,75 +313,117 @@
             bindings = <&macro_bkt>, <&macro_bkt_out>;
             mods = <(MOD_LSFT)>;
         };
-        morph_n7: morph_n7 {
+        morph_excl: morph_excl {
             compatible = "zmk,behavior-mod-morph";
-            label = "morph_n7";
+            label = "morph_excl";
             #binding-cells = <0>;
-            bindings = <&kp N7>, <&kp C_VOL_DN>;
-            mods = <(MOD_LSFT)>;
-        };
-        morph_n8: morph_n8 {
-            compatible = "zmk,behavior-mod-morph";
-            label = "morph_n8";
-            #binding-cells = <0>;
-            bindings = <&kp N8>, <&kp C_VOL_UP>;
+            bindings = <&kp EXCL>, <&kp N1>;
             mods = <(MOD_LSFT)>;
         };
         morph_at: morph_at {
             compatible = "zmk,behavior-mod-morph";
             label = "morph_at";
             #binding-cells = <0>;
-            bindings = <&kp LC(LEFT)>, <&kp AT>;
+            bindings = <&kp AT>, <&kp N2>;
             mods = <(MOD_LSFT)>;
         };
         morph_hash: morph_hash {
             compatible = "zmk,behavior-mod-morph";
             label = "morph_hash";
             #binding-cells = <0>;
-            bindings = <&kp LC(UP)>, <&kp HASH>;
+            bindings = <&kp HASH>, <&kp N3>;
             mods = <(MOD_LSFT)>;
         };
         morph_dllr: morph_dllr {
             compatible = "zmk,behavior-mod-morph";
             label = "morph_dllr";
             #binding-cells = <0>;
-            bindings = <&kp LC(DOWN)>, <&kp DLLR>;
+            bindings = <&kp DLLR>, <&kp N4>;
             mods = <(MOD_LSFT)>;
         };
         morph_prcnt: morph_prcnt {
             compatible = "zmk,behavior-mod-morph";
             label = "morph_prcnt";
             #binding-cells = <0>;
-            bindings = <&kp LC(RIGHT)>, <&kp PRCNT>;
+            bindings = <&kp PRCNT>, <&kp N5>;
             mods = <(MOD_LSFT)>;
         };
         morph_caret: morph_caret {
             compatible = "zmk,behavior-mod-morph";
             label = "morph_caret";
             #binding-cells = <0>;
-            bindings = <&kp LEFT>, <&kp CARET>;
+            bindings = <&kp CARET>, <&kp N6>;
             mods = <(MOD_LSFT)>;
         };
         morph_amps: morph_amps {
             compatible = "zmk,behavior-mod-morph";
             label = "morph_amps";
             #binding-cells = <0>;
-            bindings = <&kp DOWN>, <&kp AMPS>;
+            bindings = <&kp AMPS>, <&kp N7>;
             mods = <(MOD_LSFT)>;
         };
         morph_star: morph_star {
             compatible = "zmk,behavior-mod-morph";
             label = "morph_star";
             #binding-cells = <0>;
-            bindings = <&kp UP>, <&kp STAR>;
+            bindings = <&kp STAR>, <&kp N8>;
             mods = <(MOD_LSFT)>;
         };
-        morph_equal: morph_equal {
+        morph_plus: morph_plus {
             compatible = "zmk,behavior-mod-morph";
-            label = "morph_equal";
+            label = "morph_plus";
             #binding-cells = <0>;
-            bindings = <&kp RIGHT>, <&kp EQUAL>;
-				mods = <(MOD_LSFT)>;
+            bindings = <&kp PLUS>, <&kp N9>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_bslh: morph_bslh {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_bslh";
+            #binding-cells = <0>;
+            bindings = <&kp BSLH>, <&kp N0>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_left: morph_left {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_left";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT>, <&kp LC(LEFT)>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_down: morph_down {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_down";
+            #binding-cells = <0>;
+            bindings = <&kp DOWN>, <&kp LC(DOWN)>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_up: morph_up {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_up";
+            #binding-cells = <0>;
+            bindings = <&kp UP>, <&kp LC(UP)>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_right: morph_right {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_right";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT>, <&kp LC(RIGHT)>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_comma: morph_comma {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_comma";
+            #binding-cells = <0>;
+            bindings = <&kp LT>, <&kp COMMA>;
+            mods = <(MOD_LSFT)>;
+        };
+        morph_dot: morph_dot {
+            compatible = "zmk,behavior-mod-morph";
+            label = "morph_dot";
+            #binding-cells = <0>;
+            bindings = <&kp GT>, <&kp DOT>;
+            mods = <(MOD_LSFT)>;
         };
     };
 
@@ -399,7 +447,7 @@
 
 			  // row 2
 			  &kp A
-			  &kp R
+			  &hm LALT R
 			  &hm LGUI S
 			  &kp T
 			  &kp G
@@ -427,7 +475,7 @@
 			  &mt LCTRL ESC
 			  &mt LSHFT BSPC
 			  &lt SYM SPACE
-			  &mt LALT MINUS
+			  &lt NUM MINUS // TODO: Don't think I need this, maybe back to alt?
 			>;
 		};
 
@@ -436,20 +484,7 @@
 		sym_layer {
 			bindings = <
 			   // row 1
-				&kp N1
-				&kp N2
-				&kp N3
-				&kp N4
-				&kp N5
-
-				&kp N6
-				&morph_n7
-				&morph_n8
-				&kp N9
-				&kp N0
-
-				// row 2
-				&kp EXCL
+				&morph_excl
 				&morph_at
 				&morph_hash
 				&morph_dllr
@@ -458,26 +493,88 @@
 				&morph_caret
 				&morph_amps
 				&morph_star
-				&morph_equal // something else? equal is combo now; useful for += though
-				&kp EQUAL
+				&morph_plus
+				&morph_bslh
+
+				// row 2
+				&kp TILDE
+				&macro_bkt
+				&macro_brc
+				&macro_par
+				&kp BSLH
+
+				&morph_left
+				&morph_down
+				&morph_up
+				&morph_right
+				&kp PIPE
 
 				// row 3
 				&kp TILDE
 				&kp GRAVE
 				&macro_sqt
 				&macro_dqt
-				&kp PIPE // TODO: Maybe morph to backslash
+				&kp SEMI
 
-				&kp PLUS
-				&morph_par
-				&morph_brc
-				&morph_bkt
+				&kp COLON
+				&kp EQUAL
+				&morph_comma
+				&morph_dot
 				&kp BSLH
 
 				// row thumbs
 				&trans
 				&trans
 				&trans // being held
+				&trans
+			>;
+		};
+
+		num_layer {
+			bindings = <
+				// row 1
+				&trans
+				&trans
+				&trans
+				&trans
+				&trans
+
+				&trans
+				&trans
+				&trans
+				&trans
+				&trans
+
+				// row 2
+				&kp N1
+				&kp N2
+				&kp N3
+				&kp N4
+				&kp N5
+
+				&kp N6
+				&kp N7
+				&kp N8
+				&kp N9
+				&kp N0
+
+				// row 3
+				&trans
+				&trans
+				&trans
+				&trans
+				&trans
+
+				&trans
+				&trans
+				&trans
+				&trans
+				&trans
+
+				// row thumbs
+				&trans
+				&trans
+				&trans
 				&trans
 			>;
 		};
