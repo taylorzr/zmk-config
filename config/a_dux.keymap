@@ -31,7 +31,6 @@
     continue-list = <LSHIFT UNDERSCORE MINUS BSPC>;
 };
 
-
 / {
     macros {
         macro_par: macro_par {
@@ -141,7 +140,7 @@
             bindings = <&kp LC(LS(LEFT))>;
         };
         combo_st {
-            timeout-ms = <25>;
+            timeout-ms = <20>;
             key-positions = <12 13>;
             bindings = <&kp LC(LS(RIGHT))>;
         };
@@ -226,25 +225,25 @@
             bindings = <&kp C_NEXT>;
         };
         combo_ne {
-            timeout-ms = <25>;
+            timeout-ms = <20>;
             key-positions = <16 17>;
             bindings = <&kp COLON>;
         };
         combo_ei {
             timeout-ms = <25>;
             key-positions = <17 18>;
-            bindings = <&kp SEMI>;
-        };
-		  combo_eh {
-            timeout-ms = <35>;
-            key-positions = <17 26>;
-            bindings = <&kp EQUAL>; // FIXME: something else
-		  };
-        combo_nei {
-            timeout-ms = <50>;
-            key-positions = <16 17 18>;
             bindings = <&kp EQUAL>;
         };
+		  /* combo_eh { */
+    /*         timeout-ms = <35>; */
+    /*         key-positions = <17 26>; */
+    /*         bindings = <&kp EQUAL>; // FIXME: something else */
+		  /* }; */
+        /* combo_nei { */
+        /*     timeout-ms = <50>; */
+        /*     key-positions = <16 17 18>; */
+        /*     bindings = <&kp EQUAL>; // FIXME: something else */
+        /* }; */
         combo_nh {
             timeout-ms = <50>;
             key-positions = <16 26>;
@@ -501,7 +500,7 @@
 				&macro_bkt
 				&macro_brc
 				&macro_par
-				&kp BSLH
+				&kp PIPE
 
 				&morph_left
 				&morph_down
@@ -533,17 +532,17 @@
 		num_layer {
 			bindings = <
 				// row 1
-				&trans
-				&trans
-				&trans
-				&trans
-				&trans
+				&kp EXCL
+				&kp AT
+				&kp HASH
+				&kp DLLR
+				&kp PRCNT
 
-				&trans
-				&trans
-				&trans
-				&trans
-				&trans
+				&kp CARET
+				&kp AMPS
+				&kp STAR
+				&kp PLUS
+				&kp BSLH
 
 				// row 2
 				&kp N1
