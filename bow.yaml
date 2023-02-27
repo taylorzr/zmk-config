@@ -164,7 +164,7 @@ outlines:
       where: thumb
       size: [27,18]
 
-  perimeter:
+  _perimeter:
     - what: rectangle
       where: not_thumb
       asym: both
@@ -176,7 +176,7 @@ outlines:
       size: [2u, 1.5u]
       corner: 4.01
 
-  microcontroller_rect:
+  _xiao_space_left:
     - what: rectangle
       adjust: 
         ref: matrix_pinky_home
@@ -184,15 +184,39 @@ outlines:
       size: [25,1.25u]
       corner: 3
 
-  _xiao:
+  _xiao_space_right:
+    - what: rectangle
+      adjust: 
+        ref: mirror_matrix_pinky_home
+        shift: [0u, 1.1u]
+      size: [25,1.25u]
+      corner: 3
+
+  _xiao_ctl:
     - what: rectangle
       adjust: 
         ref: matrix_pinky_home
         shift: [0u, 1.25u]
       size: [17.5,20]
+      corner: 1
+
+  _nice_space:
+    - what: rectangle
+      adjust: 
+        ref: matrix_outer_home
+        shift: [0.75u, 1.1u]
+      size: [40,24]
       corner: 3
+
+  _nice_ctl:
+    - what: rectangle
+      adjust: 
+        ref: matrix_outer_home
+        shift: [11, 22]
+      size: [33,17.8]
+      corner: 1
     
-  _left_perimeter_joiner:
+  _left_bridge:
     - what: polygon
       operation: stack
       points:
@@ -205,7 +229,7 @@ outlines:
         - ref: matrix_index_bottom
           shift: [-0u, -0.25u]
 
-  _right_perimeter_joiner:
+  _right_bridge:
     - what: polygon
       operation: stack
       points:
@@ -218,26 +242,39 @@ outlines:
         - ref: mirror_matrix_inner_bottom
           shift: [0.5u, -0u]
 
-  perimeter_demo:
-    - perimeter
-    - microcontroller_rect
-    - _left_perimeter_joiner
-    - _right_perimeter_joiner
+  demo_nice:
+    - _perimeter
+    - _nice_space
+    - _left_bridge
+    - _right_bridge
     - -_keycaps
-    - -_xiao  
+    - -_nice_ctl
 
-  perimeter_switch_plate:
-    - perimeter
-    - microcontroller_rect
-    - _left_perimeter_joiner
-    - _right_perimeter_joiner
+  demo_xiao:
+    - _perimeter
+    - _xiao_space_left
+    - _xiao_space_right
+    - _left_bridge
+    - _right_bridge
+    - -_keycaps
+    - -_xiao_ctl  
+
+  # TODO: move pin holes here
+  # _pin_holes:
+
+  xiao_plate:
+    - _perimeter
+    - _xiao_space_left
+    - _xiao_space_right
+    - _left_bridge
+    - _right_bridge
     - -_switch_holes
     - what: circle
       operation: subtract
-      radius: 2
+      radius: 4
       adjust:
         ref: matrix_pinky_bottom
-        shift: [-0.525u, -0.5u]
+        shift: [-0.525u, -0.525u]
     - what: circle
       operation: subtract
       radius: 2
@@ -305,104 +342,9 @@ outlines:
       adjust:
         ref: mirror_matrix_inner_bottom
         shift: [0.525u, -0.5u]
-
-  polygon_left:
-    - what: polygon
-      operation: stack
-      points:
-        - ref: matrix_outer_home
-          shift: [-0.5u,0.5u]
-        - ref: matrix_ring_top
-          shift: [-0.5u,0.5u]
-        - ref: matrix_middle_top
-          shift: [-0.5u,0.5u]
-        - ref: matrix_middle_top
-          shift: [0.5u,0.5u]
-        - ref: matrix_index_top
-          shift: [0.5u,0.5u]
-        - ref: matrix_inner_top
-          shift: [0.5u,0.5u]
-        - ref: thumb_right_home
-          shift: [0.5u, -0.5u]
-        - ref: thumb_right_home
-          shift: [-0.5u,-0.5u]
-        - ref: thumb_left_home
-          shift: [-0.5u,0.5u]
-        - ref: matrix_pinky_bottom
-          shift: [-0.5u, -0.5u]
-        - ref: matrix_outer_home
-          shift: [-0.5u,-0.5u]  
   
-  _polygon_right:
-    - what: polygon
-      operation: stack
-      points:
-        - ref: mirror_matrix_inner_top
-          shift: [0.5u,0.5u]
-        - ref: mirror_matrix_index_top
-          shift: [0.5u,0.5u]
-        - ref: mirror_matrix_middle_top
-          shift: [0.5u,0.5u]
-        - ref: mirror_matrix_middle_top
-          shift: [-0.5u,0.5u]
-        - ref: mirror_matrix_ring_top
-          shift: [-0.5u,0.5u]
-        - ref: mirror_matrix_outer_home
-          shift: [-0.5u,0.5u]
-        - ref: mirror_matrix_outer_home
-          shift: [-0.5u,-0.5u]  
-        - ref: mirror_matrix_pinky_bottom
-          shift: [-0.5u, -0.5u]
-        - ref: mirror_thumb_left_home
-          shift: [-0.5u,0.5u]
-        - ref: mirror_thumb_right_home
-          shift: [-0.5u,-0.5u]
-        - ref: mirror_thumb_right_home
-          shift: [0.5u, -0.5u]
-
-  _poly_center:
-    - what: polygon
-      operation: stack
-      points:
-        - ref: matrix_inner_top
-          shift: [9,0.5u]
-        - ref: mirror_matrix_inner_top
-          shift: [9,0.5u]
-        - ref: mirror_thumb_right_home
-          shift: [9,-0.5u]
-        - ref: thumb_right_home
-          shift: [9,-0.5u]
-
-  monoblock:
-    [polygon_left, _polygon_right, _poly_center]
-  
-  split_switch_plate:
-    [polygon_left, -_switch_holes]
-  
-  monoblock_switch_plate:
-    [monoblock, -_switch_holes]
 cases:
-  perimeter:
+  xiao:
     - what: outline
-      name: perimeter_switch_plate
-      extrude: mx_plate_thickness
-  monoblock_switch_plate:
-    - what: outline
-      name: monoblock_switch_plate
-      extrude: mx_plate_thickness
-  monoblock_bottom:
-    - what: outline
-      name: monoblock
-      extrude: mx_plate_thickness
-  split_switch_plate:
-    - what: outline
-      name: split_switch_plate
-      extrude: mx_plate_thickness
-  split_bottom:
-    - what: outline
-      name: polygon_left
-      extrude: mx_plate_thickness
-  perimeter_switch_plate:
-    - what: outline
-      name: perimeter_switch_plate
+      name: xiao_plate
       extrude: mx_plate_thickness
