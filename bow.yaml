@@ -154,7 +154,6 @@ outlines:
       where: true
       asym: left
       size: 14
-
   _keycaps:
     - what: rectangle
       where: not_thumb
@@ -204,9 +203,21 @@ outlines:
     - what: rectangle
       adjust: 
         ref: matrix_outer_home
-        shift: [0.75u, 1.1u]
+        shift: [14, 21]
       size: [40,24]
       corner: 3
+    - what: rectangle
+      adjust:
+        ref: matrix_outer_home
+        shift: [8, 30]
+      size: [33,1.5]
+      operation: subtract
+    - what: rectangle
+      adjust:
+        ref: matrix_outer_home
+        shift: [8, 15]
+      size: [32,1.5]
+      operation: subtract
 
   _nice_ctl:
     - what: rectangle
@@ -259,92 +270,177 @@ outlines:
     - -_keycaps
     - -_xiao_ctl  
 
-  # TODO: move pin holes here
-  # _pin_holes:
-
-  xiao_plate:
-    - _perimeter
-    - _xiao_space_left
-    - _xiao_space_right
-    - _left_bridge
-    - _right_bridge
-    - -_switch_holes
+  _pin_holes:
     - what: circle
-      operation: subtract
-      radius: 4
+      operation: add
+      radius: 2
       adjust:
         ref: matrix_pinky_bottom
         shift: [-0.525u, -0.525u]
     - what: circle
-      operation: subtract
+      operation: add
       radius: 2
       adjust:
         ref: matrix_outer_home
         shift: [-0.525u, 0.5u]
     - what: circle
-      operation: subtract
+      operation: add
+      radius: 2
+      adjust:
+        ref: matrix_pinky_home
+        shift: [0.55u, 0.5u]
+    - what: circle
+      operation: add
+      radius: 2
+      adjust:
+        ref: matrix_middle_home
+        shift: [0.55u, 0.25u]
+    - what: circle
+      operation: add
       radius: 2
       adjust:
         ref: matrix_middle_top
         shift: [-0.525u, 0.525u]
     - what: circle
-      operation: subtract
+      operation: add
       radius: 2
       adjust:
         ref: matrix_ring_bottom
         shift: [0.525u, -0.525u]
     - what: circle
-      operation: subtract
+      operation: add
       radius: 2
       adjust:
         ref: matrix_ring_bottom
         shift: [0.525u, -0.525u]
     - what: circle
-      operation: subtract
+      operation: add
       radius: 2
       adjust:
         ref: matrix_inner_top
-        shift: [0.525u, 0.5u]
+        shift: [0.525u, 0.525u]
     - what: circle
-      operation: subtract
+      operation: add
       radius: 2
       adjust:
         ref: matrix_inner_bottom
         shift: [0.525u, -0.5u]
     - what: circle
-      operation: subtract
+      operation: add
       radius: 2
       adjust:
         ref: thumb_right_home
         shift: [0.725u, -0.5u]
     - what: circle
-      operation: subtract
+      operation: add
       radius: 2
       adjust:
         ref: thumb_right_home
         shift: [-0.725u, -0.5u]
     - what: circle
-      operation: subtract
+      operation: add
       radius: 2
       adjust:
         ref: thumb_left_home
         shift: [-0.725u, 0.5u]
 
     - what: circle
-      operation: subtract
+      operation: add
+      radius: 2
+      adjust:
+        ref: mirror_matrix_pinky_bottom
+        shift: [-0.525u, -0.525u]
+    - what: circle
+      operation: add
+      radius: 2
+      adjust:
+        ref: mirror_matrix_outer_home
+        shift: [-0.525u, 0.5u]
+    - what: circle
+      operation: add
+      radius: 2
+      adjust:
+        ref: mirror_matrix_pinky_home
+        shift: [0.55u, 0.5u]
+    - what: circle
+      operation: add
+      radius: 2
+      adjust:
+        ref: mirror_matrix_middle_home
+        shift: [0.55u, 0.25u]
+    - what: circle
+      operation: add
+      radius: 2
+      adjust:
+        ref: mirror_matrix_middle_top
+        shift: [-0.525u, 0.525u]
+    - what: circle
+      operation: add
+      radius: 2
+      adjust:
+        ref: mirror_matrix_ring_bottom
+        shift: [0.525u, -0.525u]
+    - what: circle
+      operation: add
+      radius: 2
+      adjust:
+        ref: mirror_matrix_ring_bottom
+        shift: [0.525u, -0.525u]
+    - what: circle
+      operation: add
       radius: 2
       adjust:
         ref: mirror_matrix_inner_top
-        shift: [0.525u, 0.5u]
+        shift: [0.525u, 0.525u]
     - what: circle
-      operation: subtract
+      operation: add
       radius: 2
       adjust:
         ref: mirror_matrix_inner_bottom
         shift: [0.525u, -0.5u]
+    - what: circle
+      operation: add
+      radius: 2
+      adjust:
+        ref: mirror_thumb_right_home
+        shift: [0.725u, -0.5u]
+    - what: circle
+      operation: add
+      radius: 2
+      adjust:
+        ref: mirror_thumb_right_home
+        shift: [-0.725u, -0.5u]
+    - what: circle
+      operation: add
+      radius: 2
+      adjust:
+        ref: mirror_thumb_left_home
+        shift: [-0.725u, 0.5u]
+
+  _common_plate:
+    - _perimeter
+    - _left_bridge
+    - _right_bridge
+    - -_switch_holes
+
+  xiao_plate:
+    - _common_plate
+    - _xiao_space_left
+    - _xiao_space_right
+    - -_pin_holes
+
+  nice_plate:
+    - _common_plate
+    - _nice_space
+    - -_pin_holes
   
 cases:
   xiao:
     - what: outline
       name: xiao_plate
+      extrude: mx_plate_thickness
+
+  nice:
+    - what: outline
+      name: nice_plate
       extrude: mx_plate_thickness
