@@ -153,7 +153,8 @@ outlines:
     - what: rectangle
       where: true
       asym: left
-      size: 14
+      # size: 14
+      size: 13.75
   _keycaps:
     - what: rectangle
       where: not_thumb
@@ -206,18 +207,18 @@ outlines:
         shift: [14, 21]
       size: [40,24]
       corner: 3
+
+  _nice_headers:
     - what: rectangle
       adjust:
         ref: matrix_outer_home
-        shift: [8, 30]
-      size: [33,1.5]
-      operation: subtract
+        shift: [12, 30]
+      size: [31, 1.5]
     - what: rectangle
       adjust:
         ref: matrix_outer_home
-        shift: [8, 15]
-      size: [32,1.5]
-      operation: subtract
+        shift: [12, 15]
+      size: [31, 1.5]
 
   _nice_ctl:
     - what: rectangle
@@ -259,7 +260,7 @@ outlines:
     - _left_bridge
     - _right_bridge
     - -_keycaps
-    - -_nice_ctl
+    - -_nice_headers
 
   demo_xiao:
     - _perimeter
@@ -432,6 +433,7 @@ outlines:
   nice_plate:
     - _common_plate
     - _nice_space
+    - -_nice_headers
     - -_pin_holes
   
 cases:
