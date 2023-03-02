@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 793.7007874015749 1122.5196850393702"
+   width="793.7007874015749"
+   height="1122.5196850393702"
+   version="1.1"
+   id="svg1615"
+   sodipodi:docname="bridge v1.svg"
+   inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1617"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="0.4712205"
+     inkscape:cx="-77.458429"
+     inkscape:cy="1178.8536"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1615">
+    <sodipodi:guide
+       position="438.18567,100.79935"
+       orientation="1,0"
+       id="guide2996"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="434.22186,106.75932"
+       orientation="0,-1"
+       id="guide2998"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="389.52168,-102.96936"
+       orientation="0,-1"
+       id="guide3000"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="382.03158,-95.410616"
+       orientation="1,0"
+       id="guide3002"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="577.57223,-110.52794"
+       orientation="1,0"
+       id="guide3004"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="521.45723,96.554883"
+       orientation="1,0"
+       id="guide3006"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <desc
+     id="desc1049">nice_plate(2).dxf - scale = 1.000000, origin = (0.000000, 0.000000), method = manual</desc>
+  <defs
+     id="defs1061">
+    <marker
+       id="DistanceX"
+       orient="auto"
+       refX="0.0"
+       refY="0.0"
+       style="overflow:visible">
+      <path
+         d="M 3,-3 L -3,3 M 0,-5 L  0,5"
+         style="stroke:#000000; stroke-width:0.5"
+         id="path1051" />
+    </marker>
+    <pattern
+       id="Hatch"
+       patternUnits="userSpaceOnUse"
+       width="8"
+       height="8"
+       x="0"
+       y="0">
+      <path
+         d="M8 4 l-4,4"
+         stroke="#000000"
+         stroke-width="0.25"
+         linecap="square"
+         id="path1054" />
+      <path
+         d="M6 2 l-4,4"
+         stroke="#000000"
+         stroke-width="0.25"
+         linecap="square"
+         id="path1056" />
+      <path
+         d="M4 0 l-4,4"
+         stroke="#000000"
+         stroke-width="0.25"
+         linecap="square"
+         id="path1058" />
+    </pattern>
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="g4112"
+     inkscape:label="1 copy"
+     style="display:inline">
+    <path
+       id="path1164"
+       style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:1.03457"
+       d="M 438.25195 1001.0117 A 14.583741 14.583741 0 0 0 423.66797 1015.5957 A 14.583741 14.583741 0 0 0 434.46484 1029.6602 L 385.80664 1211.3867 A 14.583741 14.583741 0 0 0 382.03711 1210.8867 A 14.583741 14.583741 0 0 0 367.45312 1225.4707 A 14.583741 14.583741 0 0 0 382.03711 1240.0547 A 14.583741 14.583741 0 0 0 396.61914 1225.4883 L 563.01953 1225.4883 A 14.583741 14.583741 0 0 0 577.59961 1240.0273 A 14.583741 14.583741 0 0 0 592.18359 1225.4434 A 14.583741 14.583741 0 0 0 577.59961 1210.8594 A 14.583741 14.583741 0 0 0 573.79688 1211.3828 L 525.17773 1029.666 A 14.583741 14.583741 0 0 0 536.00781 1015.5957 A 14.583741 14.583741 0 0 0 521.42383 1001.0117 A 14.583741 14.583741 0 0 0 506.83984 1015.5957 A 14.583741 14.583741 0 0 0 506.85156 1015.7598 L 452.82422 1015.7598 A 14.583741 14.583741 0 0 0 452.83594 1015.5957 A 14.583741 14.583741 0 0 0 438.25195 1001.0117 z M 522.85742 1008.293 A 7.559055 7.559055 0 0 1 528.57617 1013.2266 A 7.5591832 7.5591832 0 0 1 514.29492 1018.1875 A 7.559055 7.559055 0 0 1 522.85742 1008.293 z M 436.76367 1008.3574 A 7.559055 7.559055 0 0 1 445.32422 1018.2539 A 7.559055 7.559055 0 0 1 431.04492 1013.291 A 7.559055 7.559055 0 0 1 436.76367 1008.3574 z M 382.49023 1217.9512 A 7.559055 7.559055 0 0 1 386.18359 1219.2324 A 7.559055 7.559055 0 0 1 377.69531 1231.7422 A 7.559055 7.559055 0 0 1 382.49023 1217.9512 z M 577.0918 1217.9512 A 7.559055 7.559055 0 0 1 581.88672 1231.7422 A 7.5594033 7.5594033 0 0 1 573.39648 1219.2324 A 7.559055 7.559055 0 0 1 577.0918 1217.9512 z " />
+  </g>
+</svg>
