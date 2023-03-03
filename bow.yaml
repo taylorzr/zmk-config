@@ -435,6 +435,12 @@ outlines:
     - _nice_space
     - -_nice_headers
     - -_pin_holes
+
+  nice_bottom:
+    - _perimeter
+    - _left_bridge
+    - _right_bridge
+    - -_pin_holes
   
 cases:
   xiao:
