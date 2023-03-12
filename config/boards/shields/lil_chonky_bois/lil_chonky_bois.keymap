@@ -22,7 +22,7 @@
 };
 
 &lt {
-  tapping-term-ms = <150>;
+  tapping-term-ms = <130>;
   quick-tap-ms = <200>;
   flavor = "balanced";
 };
@@ -37,7 +37,7 @@
             label = "macro_par";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <10>;
+            tap-ms = <30>;
             wait-ms = <10>;
             bindings = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
         };
@@ -45,7 +45,7 @@
             label = "macro_par_out";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <10>;
+            tap-ms = <30>;
             wait-ms = <10>;
             bindings = <&macro_tap &kp LPAR &kp RPAR>;
         };
@@ -53,7 +53,7 @@
             label = "macro_brc_out";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <10>;
+            tap-ms = <30>;
             wait-ms = <10>;
             bindings = <&macro_tap &kp LBRC &kp RBRC>;
         };
@@ -61,7 +61,7 @@
             label = "macro_brc";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <10>;
+            tap-ms = <30>;
             wait-ms = <10>;
             bindings = <&macro_tap &kp LBRC &kp RBRC &kp LEFT>;
         };
@@ -69,7 +69,7 @@
             label = "macro_bkt";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <10>;
+            tap-ms = <30>;
             wait-ms = <10>;
             bindings = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
         };
@@ -77,7 +77,7 @@
             label = "macro_bkt_out";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <10>;
+            tap-ms = <30>;
             wait-ms = <10>;
             bindings = <&macro_tap &kp LBKT &kp RBKT>;
         };
@@ -85,7 +85,7 @@
             label = "macro_sqt";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <10>;
+            tap-ms = <30>;
             wait-ms = <10>;
             bindings = <&macro_tap &kp SQT &kp SQT &kp LEFT>;
         };
@@ -93,7 +93,7 @@
             label = "macro_dqt";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            tap-ms = <10>;
+            tap-ms = <30>;
             wait-ms = <10>;
             bindings = <&macro_tap &kp DQT &kp DQT &kp LEFT>;
         };
@@ -101,7 +101,7 @@
 				label = "macro_goeql";
 				compatible = "zmk,behavior-macro";
 				#binding-cells = <0>;
-				tap-ms = <10>;
+				tap-ms = <30>;
 				wait-ms = <10>;
 				bindings = <&macro_tap &kp COLON &kp EQUAL>;
 		  };
@@ -145,9 +145,9 @@
             bindings = <&kp LC(LS(RIGHT))>;
         };
         combo_rst {
-            timeout-ms = <35>;
+            timeout-ms = <50>;
             key-positions = <11 12 13>;
-            bindings = <&kp LC(LS(RIGHT))>; // FIXME: use to view desktop
+            bindings = <&kp LA(F1)>; // FIXME: doesn't work on linux actually, and diff on mac, maybe set binding to the same?
         };
         combo_rx {
             timeout-ms = <50>;
@@ -230,20 +230,20 @@
             bindings = <&kp COLON>;
         };
         combo_ei {
-            timeout-ms = <25>;
-            key-positions = <17 18>;
-            bindings = <&kp EQUAL>;
+          timeout-ms = <30>;
+          key-positions = <17 18>;
+          bindings = <&kp UNDERSCORE>;
         };
-		  /* combo_eh { */
-    /*         timeout-ms = <35>; */
-    /*         key-positions = <17 26>; */
-    /*         bindings = <&kp EQUAL>; // FIXME: something else */
-		  /* }; */
-        /* combo_nei { */
-        /*     timeout-ms = <50>; */
-        /*     key-positions = <16 17 18>; */
-        /*     bindings = <&kp EQUAL>; // FIXME: something else */
+        /* combo_eh { */
+        /*   timeout-ms = <35>; */
+        /*   key-positions = <17 26>; */
+        /*   bindings = <&kp ?>;
         /* }; */
+        combo_nei {
+            timeout-ms = <50>;
+            key-positions = <16 17 18>;
+            bindings = <&kp LC(S)>; // FIXME: something else
+        };
         combo_nh {
             timeout-ms = <50>;
             key-positions = <16 26>;
@@ -272,7 +272,7 @@
         combo_comma_dot {
             timeout-ms = <50>;
             key-positions = <27 28>;
-            bindings = <&kp UNDERSCORE>;
+            bindings = <&kp UNDERSCORE>; // FIXME: something else maybe <> macro?
         };
         combo_k_slash {
             timeout-ms = <50>;
@@ -310,76 +310,6 @@
             label = "morph_bkt";
             #binding-cells = <0>;
             bindings = <&macro_bkt>, <&macro_bkt_out>;
-            mods = <(MOD_LSFT)>;
-        };
-        morph_excl: morph_excl {
-            compatible = "zmk,behavior-mod-morph";
-            label = "morph_excl";
-            #binding-cells = <0>;
-            bindings = <&kp EXCL>, <&kp N1>;
-            mods = <(MOD_LSFT)>;
-        };
-        morph_at: morph_at {
-            compatible = "zmk,behavior-mod-morph";
-            label = "morph_at";
-            #binding-cells = <0>;
-            bindings = <&kp AT>, <&kp N2>;
-            mods = <(MOD_LSFT)>;
-        };
-        morph_hash: morph_hash {
-            compatible = "zmk,behavior-mod-morph";
-            label = "morph_hash";
-            #binding-cells = <0>;
-            bindings = <&kp HASH>, <&kp N3>;
-            mods = <(MOD_LSFT)>;
-        };
-        morph_dllr: morph_dllr {
-            compatible = "zmk,behavior-mod-morph";
-            label = "morph_dllr";
-            #binding-cells = <0>;
-            bindings = <&kp DLLR>, <&kp N4>;
-            mods = <(MOD_LSFT)>;
-        };
-        morph_prcnt: morph_prcnt {
-            compatible = "zmk,behavior-mod-morph";
-            label = "morph_prcnt";
-            #binding-cells = <0>;
-            bindings = <&kp PRCNT>, <&kp N5>;
-            mods = <(MOD_LSFT)>;
-        };
-        morph_caret: morph_caret {
-            compatible = "zmk,behavior-mod-morph";
-            label = "morph_caret";
-            #binding-cells = <0>;
-            bindings = <&kp CARET>, <&kp N6>;
-            mods = <(MOD_LSFT)>;
-        };
-        morph_amps: morph_amps {
-            compatible = "zmk,behavior-mod-morph";
-            label = "morph_amps";
-            #binding-cells = <0>;
-            bindings = <&kp AMPS>, <&kp N7>;
-            mods = <(MOD_LSFT)>;
-        };
-        morph_star: morph_star {
-            compatible = "zmk,behavior-mod-morph";
-            label = "morph_star";
-            #binding-cells = <0>;
-            bindings = <&kp STAR>, <&kp N8>;
-            mods = <(MOD_LSFT)>;
-        };
-        morph_plus: morph_plus {
-            compatible = "zmk,behavior-mod-morph";
-            label = "morph_plus";
-            #binding-cells = <0>;
-            bindings = <&kp PLUS>, <&kp N9>;
-            mods = <(MOD_LSFT)>;
-        };
-        morph_bslh: morph_bslh {
-            compatible = "zmk,behavior-mod-morph";
-            label = "morph_bslh";
-            #binding-cells = <0>;
-            bindings = <&kp BSLH>, <&kp N0>;
             mods = <(MOD_LSFT)>;
         };
         morph_left: morph_left {
@@ -486,17 +416,19 @@
 		sym_layer {
 			bindings = <
 			   // row 1
-				&morph_excl
-				&morph_at
-				&morph_hash
-				&morph_dllr
-				&morph_prcnt
+            // FIXME: don't think these all need to be morphs, got a good number layer know thats
+            // better
+				&kp EXCL
+				&kp AT
+				&kp HASH
+				&kp DLLR
+				&kp PRCNT
 
-				&morph_caret
-				&morph_amps
-				&morph_star
-				&morph_plus
-				&morph_bslh
+				&kp CARET
+				&kp AMPS
+				&kp STAR
+				&kp PLUS
+				&kp MINUS
 
 				// row 2
 				&kp TILDE
@@ -509,10 +441,10 @@
 				&morph_down
 				&morph_up
 				&morph_right
-				&kp BSLH // diff key?
+				&kp BSLH // this actually makes sense i think easier to hit than mod-/
 
 				// row 3
-				&kp TILDE
+				&kp TILDE // dupe, maybe something else? macro?
 				&macro_bkt
 				&macro_brc
 				&macro_par
@@ -538,17 +470,17 @@
 		num_layer {
 			bindings = <
 				// row 1
-				&trans
-				&trans
-				&trans
-				&trans
-				&trans
+				&kp EXCL
+				&kp AT
+				&kp HASH
+				&kp DLLR
+				&kp PRCNT
 
-				&trans
-				&trans
-				&trans
-				&trans
-				&trans
+            &kp CARET
+				&kp AMPS
+				&kp STAR
+				&kp PLUS
+				&kp MINUS
 
 				// row 2
 				&kp N1
@@ -596,7 +528,6 @@
 				&bt BT_SEL 2
 				&bootloader
 
-				&trans
 				&trans
 				&trans
 				&trans
