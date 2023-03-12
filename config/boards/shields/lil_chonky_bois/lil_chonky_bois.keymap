@@ -401,9 +401,6 @@
 			  &kp SLASH
 
 			  // row thumbs
-			  &none
-			  &none
-			  &none
 			  &mt LCTRL ESC
 			  &mt LSHFT BSPC
 			  &lt SYM SPACE
@@ -457,9 +454,6 @@
 				&trans
 
 				// row thumbs
-				&none
-				&none
-				&none
 				&trans
 				&trans
 				&trans // being held
@@ -509,9 +503,6 @@
 				&trans
 
 				// row thumbs
-				&none
-				&none
-				&none
 				&trans
 				&trans
 				&trans
@@ -560,9 +551,6 @@
 				&trans
 
 				// row thumbs
-				&none
-				&none
-				&none
 				&trans
 				&trans
 				&trans
