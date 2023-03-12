@@ -52,7 +52,7 @@ chonk:
 	cd ../zmk/app
 	west build --pristine -d build_lil_chonky_bois_left -b nice_nano_v2 -- -DSHIELD=lil_chonky_bois_left -DZMK_CONFIG="${HOME}/code/zmk-config/config"
 
-chonkr:
+rchonk:
 	cd ../zmk/app
 	west build --pristine -d build_lil_chonky_bois_right -b nice_nano_v2 -- -DSHIELD=lil_chonky_bois_right -DZMK_CONFIG="${HOME}/code/zmk-config/config"
 
@@ -60,6 +60,6 @@ chonkf:
 	cd ../zmk/app
 	cp build_lil_chonky_bois_left/zephyr/zmk.uf2 /run/media/$(USER)/NICENANO/
 
-chonkfr:
+rchonkf:
 	cd ../zmk/app
 	cp build_lil_chonky_bois_right/zephyr/zmk.uf2 /run/media/$(USER)/NICENANO/
