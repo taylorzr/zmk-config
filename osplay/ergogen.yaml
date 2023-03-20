@@ -17,6 +17,10 @@ units:
   choc_plate_thickness: 1.2
   mx_plate_thickness: 1.5
 
+  pin_hole_rad: 2
+  # use 3-4 to test fit
+  # pin_hole_rad: 3.5
+
 points:
   mirror:
     ref: thumb_right_home
@@ -220,6 +224,18 @@ outlines:
         shift: [12, 15]
       size: [31, 1.5]
 
+  _nice_jst:
+    - what: rectangle
+      adjust:
+        ref: matrix_outer_home
+        shift: [12, 27.25]
+      size: [31, 6.35]
+    - what: rectangle
+      adjust:
+        ref: matrix_outer_home
+        shift: [12, 13.5]
+      size: [31, 6.35]
+
   _nice_ctl:
     - what: rectangle
       adjust: 
@@ -260,7 +276,7 @@ outlines:
     - _left_bridge
     - _right_bridge
     - -_keycaps
-    - -_nice_headers
+    - -_nice_jst
 
   demo_xiao:
     - _perimeter
@@ -274,149 +290,149 @@ outlines:
   _pin_holes:
     - what: circle
       operation: add
-      radius: 2
-      adjust:
-        ref: matrix_pinky_bottom
-        shift: [-0.525u, -0.525u]
-    - what: circle
-      operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: matrix_outer_home
-        shift: [-0.525u, 0.5u]
+        shift: [-0.53u, 0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
-        ref: matrix_pinky_home
-        shift: [0.55u, 0.5u]
+        ref: matrix_pinky_bottom
+        shift: [-0.53u, -0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
+      adjust:
+        ref: matrix_ring_top
+        shift: [-0.53u, 0.53u]
+    - what: circle
+      operation: add
+      radius: pin_hole_rad
+      adjust:
+        ref: matrix_ring_home
+        shift: [-0.525u, -0.5u]
+    - what: circle
+      operation: add
+      radius: pin_hole_rad
       adjust:
         ref: matrix_middle_home
-        shift: [0.55u, 0.25u]
+        shift: [0.5u, -0.5u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: matrix_middle_top
-        shift: [-0.525u, 0.525u]
+        shift: [0.53u, 0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: matrix_ring_bottom
-        shift: [0.525u, -0.525u]
+        shift: [0.53u, -0.53u]
     - what: circle
       operation: add
-      radius: 2
-      adjust:
-        ref: matrix_ring_bottom
-        shift: [0.525u, -0.525u]
-    - what: circle
-      operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: matrix_inner_top
-        shift: [0.525u, 0.525u]
+        shift: [0.53u, 0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: matrix_inner_bottom
-        shift: [0.525u, -0.5u]
+        shift: [0.53u, -0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: thumb_right_home
-        shift: [0.725u, -0.5u]
+        shift: [0.78u, -0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: thumb_right_home
-        shift: [-0.725u, -0.5u]
+        shift: [-0.78u, -0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: thumb_left_home
-        shift: [-0.725u, 0.5u]
+        shift: [-0.78u, 0.53u]
 
     - what: circle
       operation: add
-      radius: 2
-      adjust:
-        ref: mirror_matrix_pinky_bottom
-        shift: [-0.525u, -0.525u]
-    - what: circle
-      operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: mirror_matrix_outer_home
-        shift: [-0.525u, 0.5u]
+        shift: [-0.53u, 0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
-        ref: mirror_matrix_pinky_home
-        shift: [0.55u, 0.5u]
+        ref: mirror_matrix_pinky_bottom
+        shift: [-0.53u, -0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
+      adjust:
+        ref: mirror_matrix_ring_top
+        shift: [-0.53u, 0.53u]
+    - what: circle
+      operation: add
+      radius: pin_hole_rad
+      adjust:
+        ref: mirror_matrix_ring_home
+        shift: [-0.525u, -0.5u]
+    - what: circle
+      operation: add
+      radius: pin_hole_rad
       adjust:
         ref: mirror_matrix_middle_home
-        shift: [0.55u, 0.25u]
+        shift: [0.5u, -0.5u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: mirror_matrix_middle_top
-        shift: [-0.525u, 0.525u]
+        shift: [0.53u, 0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: mirror_matrix_ring_bottom
-        shift: [0.525u, -0.525u]
+        shift: [0.53u, -0.53u]
     - what: circle
       operation: add
-      radius: 2
-      adjust:
-        ref: mirror_matrix_ring_bottom
-        shift: [0.525u, -0.525u]
-    - what: circle
-      operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: mirror_matrix_inner_top
-        shift: [0.525u, 0.525u]
+        shift: [0.53u, 0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: mirror_matrix_inner_bottom
-        shift: [0.525u, -0.5u]
+        shift: [0.53u, -0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: mirror_thumb_right_home
-        shift: [0.725u, -0.5u]
+        shift: [0.78u, -0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: mirror_thumb_right_home
-        shift: [-0.725u, -0.5u]
+        shift: [-0.78u, -0.53u]
     - what: circle
       operation: add
-      radius: 2
+      radius: pin_hole_rad
       adjust:
         ref: mirror_thumb_left_home
-        shift: [-0.725u, 0.5u]
+        shift: [-0.78u, 0.53u]
 
   _common_plate:
     - _perimeter
@@ -433,7 +449,7 @@ outlines:
   nice_plate:
     - _common_plate
     - _nice_space
-    - -_nice_headers
+    - -_nice_jst
     - -_pin_holes
 
   nice_bottom:
