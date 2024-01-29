@@ -1,0 +1,6 @@
+if SHIELD_GOSHAWK
+
+config ZMK_KEYBOARD_NAME
+    default "goshawk"
+
+endif
