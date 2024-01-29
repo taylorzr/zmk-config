@@ -27,6 +27,7 @@ ifeq ($(UNAME), Linux)
 	rm zephyr-sdk-0.15.0_linux-x86_64.tar.gz
 	cd zephyr-sdk-0.15.0
 	./setup.sh
+	pip3 install --user -U west
 endif
 ifeq ($(UNAME), Darwin)
 endif

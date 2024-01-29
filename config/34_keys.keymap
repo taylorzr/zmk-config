@@ -33,6 +33,42 @@
 
 / {
     macros {
+    // timings accidentally triggering occasionally, tweak
+    // - lu
+    // - st
+    // - rs
+        macro_secret: macro_secret {
+            label = "macro_secret";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <30>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp N &kp O &kp EXCL>;
+        };
+        macro_secret_2: macro_secret_2 {
+            label = "macro_secret_2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <30>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp N &kp O &kp EXCL>;
+        };
+        macro_email: macro_email {
+            label = "macro_email";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <30>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp N &kp O &kp EXCL>;
+        };
+        macro_email_2: macro_email_2 {
+            label = "macro_email_2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <30>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp N &kp O &kp EXCL>;
+        };
         macro_than: macro_than {
             label = "macro_than";
             compatible = "zmk,behavior-macro";
@@ -117,6 +153,7 @@
 
     combos {
         compatible = "zmk,combos";
+        // row 1
         combo_wf {
             timeout-ms = <50>;
             key-positions = <1 2>;
@@ -127,106 +164,25 @@
             key-positions = <2 3>;
             bindings = <&kp TAB>;
         };
-        /* combo_wp { */
-        /*     timeout-ms = <50>; */
-        /*     key-positions = <1 3>;
-        /*     bindings = <&kp DEL>; */
-        /* }; */
-        /* combo_ly { */
-        /*     timeout-ms = <50>; */
-        /*     key-positions = <1 3>;
-        /*     bindings = <&kp DEL>; */
-        /* }; */
+        combo_wp {
+            timeout-ms = <50>;
+            key-positions = <1 3>;
+            bindings = <&kp LC(LS(LG(N4)))>;
+        };
         combo_wfp {
             timeout-ms = <50>;
             key-positions = <1 2 3>;
             bindings = <&kp DEL>;
         };
-        combo_rs {
-            timeout-ms = <20>;
-            key-positions = <11 12>;
-            bindings = <&kp LC(LS(LEFT))>;
-        };
-        combo_st {
-            timeout-ms = <20>;
-            key-positions = <12 13>;
-            bindings = <&kp LC(LS(RIGHT))>;
-        };
-        combo_rst {
-            timeout-ms = <50>;
-            key-positions = <11 12 13>;
-            bindings = <&kp LC(LS(LG(N4)))>; // screenshot copy
-        };
-        // TODO: maybe make a morph combo?
-        /* combo_ct { */
-        /*     timeout-ms = <50>; */
-        /*     key-positions = <22 13>; */
-        /*     bindings = <&kp LS(LG(N4))>; // screenshot file */
-        /* }; */
-        combo_sd {
-            timeout-ms = <50>;
-            key-positions = <12 23>;
-            bindings = <&kp LPAR>;
-        };
-        combo_ct {
-            timeout-ms = <50>;
-            key-positions = <22 13>;
-            bindings = <&kp LBRC>;
-        };
-        combo_xs {
-            timeout-ms = <50>;
-            key-positions = <21 12>;
-            bindings = <&kp LBKT>;
-        };
-        combo_he {
-            timeout-ms = <50>;
-            key-positions = <26 17>;
-            bindings = <&kp RPAR>;
-        };
-        combo_n_comma {
-            timeout-ms = <50>;
-            key-positions = <16 27>;
-            bindings = <&kp RBRC>;
-        };
-        combo_e_dot {
-            timeout-ms = <50>;
-            key-positions = <17 28>;
-            bindings = <&kp RBKT>;
-        };
-        combo_xc {
-            timeout-ms = <50>;
-            key-positions = <21 22>;
-            bindings = <&kp LG(C)>;
-        };
-        combo_xd {
-            timeout-ms = <50>;
-            key-positions = <21 23>;
-            bindings = <&kp LG(X)>;
-        };
-        combo_cd {
-            timeout-ms = <50>;
-            key-positions = <22 23>;
-            bindings = <&kp LG(V)>;
-        };
-        combo_xcd {
-            timeout-ms = <50>;
-            key-positions = <21 22 23>;
-            bindings = <&kp LS(LG(V))>;
-        };
-        combo_zv {
-            timeout-ms = <50>;
-            key-positions = <20 24>;
-            bindings = <&reset>;
-        };
         combo_lu {
-            timeout-ms = <35>;
+            timeout-ms = <25>; // was 35
             key-positions = <6 7>;
             bindings = <&kp LC(S)>;
         };
         combo_uy {
             timeout-ms = <50>;
             key-positions = <7 8>;
-            bindings = <&kp MINUS>; // FIXME: dont use this
+            bindings = <&kp SQT>; // FIXME: dont use this
         };
         combo_luy {
             timeout-ms = <35>;
@@ -243,45 +199,83 @@
             key-positions = <5 7>;
             bindings = <&kp C_NEXT>;
         };
+        // row 2
+        combo_rs {
+            timeout-ms = <15>; // was 20
+            key-positions = <11 12>;
+            bindings = <&kp LC(LS(LEFT))>;
+        };
+        combo_st {
+            timeout-ms = <15>; // was 20
+            key-positions = <12 13>;
+            bindings = <&kp LC(LS(RIGHT))>;
+        };
+        // row 3
+        combo_xc {
+            timeout-ms = <50>;
+            key-positions = <21 22>;
+            bindings = <&kp LBKT>;
+        };
+        combo_xd {
+            timeout-ms = <50>;
+            key-positions = <21 23>;
+            bindings = <&kp LBRC>;
+        };
+        combo_cd {
+            timeout-ms = <50>;
+            key-positions = <22 23>;
+            bindings = <&kp LPAR>;
+        };
+        combo_xcd {
+            timeout-ms = <50>;
+            key-positions = <21 22 23>;
+            bindings = <&kp LS(LG(V))>;
+        };
+        combo_zv {
+            timeout-ms = <50>;
+            key-positions = <20 24>;
+            bindings = <&sys_reset>;
+        };
         combo_ne {
             timeout-ms = <20>;
             key-positions = <16 17>;
-            bindings = <&kp COLON>;
+            bindings = <&kp ENTER>;
         };
         combo_ei {
           timeout-ms = <30>;
           key-positions = <17 18>;
-          bindings = <&kp SQT>;
-        };
-        /* combo_eh { */
-        /*   timeout-ms = <35>; */
-        /*   key-positions = <17 26>; */
-        /*   bindings = <&kp ?>;
-        /* }; */
-        combo_nei {
-            timeout-ms = <50>;
-            key-positions = <16 17 18>;
-            bindings = <&kp LC(S)>; // FIXME: something else maybe screenshot file?
+          bindings = <&kp COLON>;
         };
         combo_h_comma {
             timeout-ms = <50>;
             key-positions = <26 27>;
-            bindings = <&kp ENTER>;
+            bindings = <&kp RPAR>;
+        };
+        combo_comma_dot {
+            timeout-ms = <50>;
+            key-positions = <27 28>;
+            bindings = <&kp RBKT>;
+        };
+        combo_h_dot {
+            timeout-ms = <50>;
+            key-positions = <26 28>;
+            bindings = <&kp RBRC>;
         };
         combo_h_comma_dot {
             timeout-ms = <50>;
             key-positions = <26 27 28>;
             bindings = <&caps_word>; // FIXME: I don't really use this, something else
         };
-        combo_comma_dot {
-            timeout-ms = <50>;
-            key-positions = <27 28>;
-            bindings = <&macro_than>;
-        };
         combo_k_slash {
             timeout-ms = <50>;
             key-positions = <25 29>;
-            bindings = <&reset>;
+            bindings = <&sys_reset>;
+        };
+        // thumbs
+        combo_right_thumbs {
+          timeout-ms = <30>;
+          key-positions = <32 33>;
+          bindings = <&kp UNDERSCORE>;
         };
     };
 
@@ -294,6 +288,15 @@
             quick-tap-ms = <200>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+        };
+        hl: homerow_layers {
+            compatible = "zmk,behavior-hold-tap";
+            label = "homerow_layers";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
         };
         morph_sqt: morph_sqt {
             compatible = "zmk,behavior-mod-morph";
@@ -358,6 +361,7 @@
             bindings = <&kp RIGHT>, <&kp LC(RIGHT)>;
             mods = <(MOD_LSFT)>;
         };
+        // TODO: maybe remove
         morph_comma: morph_comma {
             compatible = "zmk,behavior-mod-morph";
             label = "morph_comma";
@@ -380,7 +384,7 @@
 		base_layer {
 			bindings = <
 			  // row 1
-			  &lt CTL Q
+			  &kp Q
 			  &kp W
 			  &kp F
 			  &kp P
@@ -393,7 +397,7 @@
 			  &kp SQT
 
 			  // row 2
-			  &kp A
+			  &hl CTL A
 			  &hm LALT R
 			  &hm LGUI S
 			  &kp T
@@ -422,12 +426,10 @@
 			  &mt LCTRL ESC
 			  &mt LSHFT BSPC
 			  &lt SYM SPACE
-			  &lt NUM MINUS // TODO: Don't think I need this, maybe back to alt?
+			  &lt NUM MINUS
 			>;
 		};
 
-		/* &kp C_MUTE */
-		/* &kp C_SLEEP */
 		sym_layer {
 			bindings = <
 			   // row 1
@@ -457,20 +459,20 @@
 				&kp BSLH
 
 				// row 3
-				&macro_secret
+				&trans
 				&morph_bkt
 				&morph_brc
 				&morph_par
 				&kp SEMI
 
-				&kp COLON // FIXME: change maybe, always use the combo for this
+				&kp COLON // TODO: change maybe, always use the combo for this
 				&kp EQUAL
-				&morph_comma
-				&morph_dot
+            &trans
+            &trans
 				&trans
 
 				// row thumbs
-				&kp MINUS
+				&trans
 				&trans
 				&trans // being held
 				&trans
@@ -508,8 +510,8 @@
 				// row 3
 				&trans
 				&trans
-				&trans
-				&trans
+            &trans
+            &trans
 				&trans
 
 				&trans
@@ -519,7 +521,7 @@
 				&trans
 
 				// row thumbs
-				&kp MINUS
+				&trans
 				&trans
 				&trans
 				&trans
@@ -529,7 +531,7 @@
 		ctl_layer {
 			bindings = <
 				// row 1
-				&trans
+				&bt BT_CLR
 				&bt BT_SEL 0
 				&bt BT_SEL 1
 				&bt BT_SEL 2
@@ -539,26 +541,27 @@
 				&trans
 				&trans
 				&trans
+				&trans
 
 				// row 2
 				&trans
 				&trans
-				&bt BT_PRV
-				&bt BT_NXT
+				&macro_email
+				&macro_secret
 				&trans
 
 				&trans
-				&trans
-				&trans
+				&bt BT_PRV
+				&bt BT_NXT
 				&trans
 				&trans
 
 				// row 3
 				&trans
 				&trans
+				&macro_email_2
+				&macro_secret_2
 				&trans
-				&trans
-				&bt BT_CLR
 
 				&trans
 				&trans
@@ -575,3 +578,13 @@
 		};
     };
 };
+
+
+// NOTE: My dir are setup like
+// - ~/code/zmk
+// - ~/code/zmk-config
+#include <../../../zmk-config/config/dont_commit_me.dtsi>
+// this file might include something like
+// &macro_secret {
+//   bindings = <&macro_tap &kp S &kp H &kp H>;
+// };
