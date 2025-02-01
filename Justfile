@@ -17,6 +17,12 @@ xiao mode="build":
 	just {{mode}} tester_xiao seeeduino_xiao_ble XIAO-SENSE
 	# cd ../zmk/app && west build --pristine -d build_xiao -b seeeduino_xiao_ble -- -DSHIELD=tester_xiao
 
+osprette mode="build":
+  just {{mode}} osprette nice_nano_v2 NICENANO
+
+tern mode="build":
+  just {{mode}} tern_ble seeeduino_xiao_ble XIAO-SENSE
+
 [private]
 alias b := build
 

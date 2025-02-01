@@ -31,6 +31,15 @@
   continue-list = <LSHIFT UNDERSCORE MINUS BSPC>;
 };
 
+/*
+challenges
+ctrl-z
+shift-v -> solved by combo
+ctrl-v -> not used often enough?
+typing zmk lol
+*/
+
+
 / {
   keymap {
     compatible = "zmk,keymap";
@@ -64,23 +73,23 @@
         &kp O
 
         // row 3
-        &trans
-        // &kp Z // dropped on 30-key
+        // &trans
+        &kp Z // dropped on 30-key
 
         &kp X
         &kp C
         &kp D
-        &trans
-        // &kp V // dropped on 30-key
+        // &trans
+        &kp V // dropped on 30-key
 
 
-        &trans
-        // &kp K // dropped on 30-key
+        // &trans
+        &kp K // dropped on 30-key
         &kp H
         &kp COMMA
         &kp DOT
-        &trans
-        // &kp SLASH // dropped on 30-key
+        // &trans
+        &kp SLASH // dropped on 30-key
 
         // row thumbs
         // TODO: feel like swapping CTRL <> SHIFT would be better, reason not to?
@@ -111,21 +120,21 @@
         &kp GRAVE
         &macro_sqt
         &macro_dqt
-        &morph_pipe
+        &kp PIPE
 
         &kp LEFT
         &kp DOWN
         &kp UP
         &kp RIGHT
-        &kp SLASH
+        &kp BSLH
 
         // row 3
         &trans // dropped on 30-key
         &macro_bkt
         &macro_brc
         &macro_par
-        &trans
-        // &kp SEMI // dropped on 30-key
+        // &trans
+        &kp SEMI // dropped on 30-key
 
         &trans // dropped on 30-key
         &kp EQUAL
@@ -282,7 +291,7 @@
     combo_uy {
       timeout-ms = <20>;
       key-positions = <7 8>;
-      bindings = <&kp UNDERSCORE>;
+      bindings = <&kp SEMI>;
     };
     combo_luy {
       timeout-ms = <50>;
@@ -304,7 +313,7 @@
     combo_rst {
       timeout-ms = <30>;
       key-positions = <11 12 13>;
-      bindings = <&kp LG(V)>;
+      bindings = <&morph_paste_copy>;
     };
     combo_ne {
       timeout-ms = <20>;
@@ -314,12 +323,12 @@
     combo_ei {
       timeout-ms = <30>;
       key-positions = <17 18>;
-      bindings = <&morph_colon>;
+      bindings = <&kp COLON>;
     };
     combo_nei {
       timeout-ms = <30>;
       key-positions = <16 17 18>;
-      bindings = <&kp LS(V)>;
+      bindings = <&kp UNDERSCORE>;
     };
 
     // row 3
@@ -327,6 +336,8 @@
       timeout-ms = <50>;
       key-positions = <21 22 23>;
       bindings = <&kp LS(LG(V))>; // clipboard selection
+      // TODO: find another spot of sticky shift
+      // bindings = <&sk LSHIFT>;
     };
 
     // singles of each [{()}]
@@ -536,22 +547,11 @@
       flavor = "tap-preferred";
       bindings = <&mo>, <&kp>;
     };
-    morph_colon: morph_colon {
+    // TODO: use or delete
+    morph_paste_copy: morph_paste_copy {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
-      bindings = <&kp COLON>, <&kp SEMI>;
-      mods = <(MOD_LSFT)>;
-    };
-    morph_pipe: morph_pipe {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp PIPE>, <&kp BSLH>;
-      mods = <(MOD_LSFT)>;
-    };
-    morph_copy_paste: morph_copy_paste {
-      compatible = "zmk,behavior-mod-morph";
-      #binding-cells = <0>;
-      bindings = <&kp LG(C)>, <&kp LG(V)>;
+      bindings = <&kp LG(V)>, <&kp LG(C)>;
       mods = <(MOD_LSFT)>;
     };
   };
